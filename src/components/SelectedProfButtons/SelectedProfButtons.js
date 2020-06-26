@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './UserButtons.css'
 
-class UserButtons extends Component {
+class SelectedProfButtons extends Component {
     render() { 
         return (  
             <div className='userBtn'>
                 <ul>
                     <li>
-                        <Link to='/setup'>Add Dog</Link>
+                        Paw
                     </li>
                     <li>
-                        <Link to='/setup'>Edit Profile</Link>
+                        <Link to='/meetup'>Invite to Meet</Link>
                     </li>
                 </ul>              
             </div>
@@ -19,4 +18,4 @@ class UserButtons extends Component {
     }
 }
  
-export default UserButtons;
+export default SelectedProfButtons;

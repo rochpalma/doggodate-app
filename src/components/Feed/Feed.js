@@ -10,7 +10,7 @@ class Feed extends Component {
             <div>
                 <ProfileNav />
                 <PetList />
-                <Profile />
+                {/* <Profile /> */}
                 <Footer />
             </div>
         );

@@ -1,0 +1,10 @@
+nav ul{
+    display: flex;
+    position: absolute;
+    right: 15%; 
+} 
+
+nav li{
+    list-style-type: none;
+    margin-right: 20px;
+}

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Footer from '../Footer/Footer';
+import { Link } from 'react-router-dom';
+import logo from '../../DogTinder.png';
+import './Signin.css'
 
 
 class Signin extends Component {
@@ -7,21 +10,23 @@ class Signin extends Component {
         return (  
             <div>
                 <header>
-                    <img src='../DogTinder.png' alt='dog tinder logo' />
+                    <img src={logo} alt='dog tinder logo' className='logo'/>
                 </header>
                 <main>
-                <form>
-                    <fieldset>
-                    <legend>Sign in to your account</legend>
-                    <div class ='input-container'>
-                        <label for='username'>Username</label>
-                        <input type='text' name='username' id='username' required/>
-                        <label for='password'>Password</label>
-                        <input type='text' name='password' id='password' required/>
-                        <input type='submit' value='Sign in' id='submit' /> 
-                    </div>                           
-                    </fieldset>         
-                </form>
+                    <div className='userform-container'>
+                        <form>
+                            <fieldset>
+                                <div className='form-fields'>
+                                    <legend>Sign in to your account</legend>                   
+                                    <label for='username'>Username</label>
+                                    <input type='text' name='username' id='username' required/>
+                                    <label for='password'>Password</label>
+                                    <input type='text' name='password' id='password' required/>
+                                    <Link to='/feed'>Sign in</Link>
+                                </div>                          
+                            </fieldset>                                 
+                        </form>
+                    </div>
                 </main>
                 <Footer />
             </div>

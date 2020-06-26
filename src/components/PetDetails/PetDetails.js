@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import './PetDetails.css';
 
 class PetDetails extends Component {
     render() { 
         return (  
             <div>
-                <section>
+                <section className='pet-details'>
                     <h2>Botchog</h2>
                     <p>Poodle</p>
                     <p> Medium | 6 | Male</p>
