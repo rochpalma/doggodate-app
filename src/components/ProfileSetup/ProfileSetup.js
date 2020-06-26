@@ -14,7 +14,7 @@ class ProfileSetup extends Component {
                         <form>
                             <fieldset>
                                 <div className='form-fields'>
-                                    <legend>Dog Profile</legend>       
+                                    <legend>Dog's Profile</legend>       
                                     <button>Add Photos</button>
                                     <label for='name'>Name</label>
                                     <input type='text' name='name' id='name' required/>
