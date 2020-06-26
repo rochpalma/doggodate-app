@@ -24,7 +24,7 @@ class Signup extends Component {
                                     <input type='password' name='password' id='password' required/>
                                     <label for='password-2'>Confirm Password</label>
                                     <input type='password' name='password-2' id='password-2' required/>
-                                    <Link to='/setup'>Sign up</Link>
+                                    <Link to='/setup'>Save</Link>
                                 </div>
                             </fieldset>
                         </form>
