@@ -1,0 +1,17 @@
+nav{
+    height: 50px;
+    position: relative;
+}
+
+.logo{
+    width:150px;
+    position: absolute;
+    left: 5%; 
+}
+
+.nav-link{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    right: 5%;  
+}

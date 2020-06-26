@@ -1,0 +1,14 @@
+main{
+    height: 650px;
+    display: flex;
+    text-align: center;
+}
+
+.landing-container{
+    margin: auto;
+    align-self: center;
+}
+
+.landing-container p{
+    font-size: 30px;
+}

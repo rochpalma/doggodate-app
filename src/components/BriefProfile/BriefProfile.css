@@ -1,0 +1,7 @@
+.box{
+    list-style-type: none;
+    width: 350px;
+    height: 450px;
+    float: left;
+    margin: 20px 10px 10px;
+}

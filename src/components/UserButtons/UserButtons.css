@@ -1,0 +1,7 @@
+.userBtn ul{
+    display: flex;
+}
+.userBtn li{
+    list-style-type: none;
+    margin-right: 20px;
+}
