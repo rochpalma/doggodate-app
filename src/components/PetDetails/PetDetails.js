@@ -8,7 +8,7 @@ class PetDetails extends Component {
                 <section className='pet-details'>
                     <h2>Botchog</h2>
                     <p>Poodle</p>
-                    <p> Medium | 6 | Male</p>
+                    <p> Medium | Adult | Male</p>
                     <p>90292</p>          
                     <h3>About Me</h3>
                     <p>Los Angeles, CA</p>

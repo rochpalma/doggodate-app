@@ -16,7 +16,7 @@ class SelectedProfile extends Component {
                     <section className='pet-details'>
                         <h2>Dazai</h2>
                         <p>Dachshund</p>
-                        <p> Medium | 0.5 | Male</p>
+                        <p> Medium | Young | Male</p>
                         <p>90292</p>          
                         <h3>About Me</h3>
                         <p>Los Angeles, CA</p>
