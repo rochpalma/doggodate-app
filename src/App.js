@@ -13,7 +13,7 @@ import  './App.css';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='App main-display'>
       <Route exact path = '/' component={LandingPage}/>
       <Route exact path = '/signin' component={Signin}/>
       <Route exact path = '/signup' component={Signup}/>

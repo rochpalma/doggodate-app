@@ -6,9 +6,9 @@ class Home extends Component {
     render() { 
         return (  
             <main>
-                <div className='landing-container'>
+                <div className='landing-container border'>
                     <p>Want to discover dogs nearby for a play date?</p>
-                    <Link to='/signup'>Sign up</Link>
+                    <Link to='/signup' className='btn'>Sign up</Link>
                 </div>
             </main>
         );

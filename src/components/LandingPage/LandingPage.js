@@ -9,7 +9,7 @@ class LandingPage extends Component {
             <>
                 <HomeNav />
                 <Home />
-                <Footer />
+                {/* <Footer /> */}
             </>
         );
     }

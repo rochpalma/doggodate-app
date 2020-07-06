@@ -4,7 +4,7 @@ nav{
 }
 
 .logo{
-    width:150px;
+    width:200px;
     position: absolute;
     left: 5%; 
 }
@@ -12,6 +12,6 @@ nav{
 .nav-link{
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 40%;
     right: 5%;  
 }
