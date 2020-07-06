@@ -1,3 +1,24 @@
 .form-fields legend{
     margin-bottom: 30px;
 }
+
+.signin-bg{
+    background-image: url(../../images/bg/signin.jpg);
+} 
+
+.signin-border{
+    border-radius: 25px;
+    border: 2px solid #dcdcdc;
+    height: 450px;
+    width: 400px;
+    background-color:#dcdcdc;
+    opacity: 0.8;
+}
+
+.signin-border fieldset{
+    border: none;
+}
+
+.form-fields legend{
+  font-size: 25px;  
+}

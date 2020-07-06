@@ -10,5 +10,14 @@ main{
 }
 
 .landing-container p{
-    font-size: 30px;
+    font-size: 23px;
+    font-weight: 600;
+    padding: 0 80px;
+    margin-bottom: 10;
+}
+
+.border{
+    border-radius: 25px;
+    border: 2px solid black;
+    height: 95px;
 }

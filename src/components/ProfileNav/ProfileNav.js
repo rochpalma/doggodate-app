@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../DogTinder.png';
+import logo from '../../images/logo/DoggoDate_02.png';
 import './ProfileNav.css';
 
 class ProfileNav extends Component {
     render() { 
         return (  
             <nav>
-                <img src={logo} alt='dog tinder logo' className='logo'/>
+                <Link to='/feed'><img src={logo} alt='dog tinder logo' className='logo'/></Link>
                 <ul>
                     <li>
                         <Link to='/feed' className='nav-links'>Home</Link>

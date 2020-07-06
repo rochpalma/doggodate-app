@@ -1,19 +1,25 @@
 .userform-container{
-    margin: auto;
-}
-
-.form-fields{
-    height: 350px;
-    width: 500px;
-    margin-top: 30px;
+    margin-left: 300px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
 
-.form-fields input{
-    width: 300px;
-    margin-bottom: 15px;
-    padding: 6px;
+.form-border{
+    border-radius: 25px;
+    border: 2px solid #f26a5d;
+    height: 450px;
+    width: 400px;
+    background-color:#f26a5d;
+    opacity: 0.8;
+
 }
 
+.signup-bg{
+    background-image: url(../../images/bg/signup_bg.jpg);
+} 
+
+.red{
+    background-color: #cf0a2c;
+    color: white;
+}

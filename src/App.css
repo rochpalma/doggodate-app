@@ -20,3 +20,51 @@ img{
     width:250px;
 }
 
+
+a{
+    text-decoration: none;
+}
+
+.main-display{
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+} 
+.btn{
+    width: 150px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: #2c2627;
+    color:#FFFFFF;
+    padding: 8px 40px;
+    border-radius: 20px;
+    border: none;
+}
+
+.btn:hover{
+    color: #2c2627;
+    background-color: #FFFFFF;
+}
+
+
+.form-fields{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.form-fields input{
+    width: 250px;
+    margin-bottom: 15px;
+    padding: 6px;
+    border-radius: 25px;
+    border: none;
+    height: 35px;
+}
+
+.form-fields a{
+    margin-bottom: 15px;
+}
+
