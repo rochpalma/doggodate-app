@@ -1,19 +1,46 @@
 .userform-container{
-    margin: auto;
+    margin-left: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+.form-border{
+    border-radius: 25px;
+    border: 2px solid #f26a5d;
+    height: 450px;
+    width: 400px;
+    background-color:#f26a5d;
+    opacity: 0.8;
+
+}
+
+.form-border a{
+    margin-top: 10px;
+}
 .form-fields{
-    height: 350px;
-    width: 500px;
+    /* height: 350px;
+    width: 500px; */
     margin-top: 30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
 }
 
 .form-fields input{
-    width: 300px;
+    width: 200px;
     margin-bottom: 15px;
     padding: 6px;
+    border-radius: 25px;
+    border: none;
+    height: 35px;
 }
 
+.signup-bg{
+    background-image: url(../../images/bg/signup_bg.jpg);
+} 
+
+.red{
+    background-color: #cf0a2c;
+    color: white;
+}

@@ -26,12 +26,11 @@ a{
 }
 
 .main-display{
-    background-image: url(images/bg/landingpage_bg.jpg);
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-}
+} 
 .btn{
     width: 150px;
     text-transform: uppercase;
