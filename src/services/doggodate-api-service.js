@@ -28,7 +28,9 @@ const DoggodateApiService = {
     );
   },
   getUser() {
-    return fetch(`${config.API_ENDPOINT}/users/getdetails`, {
+    //remove temp
+    // return fetch(`${config.API_ENDPOINT}/users/getdetails`, {
+    return fetch(`${config.API_ENDPOINT}/users/`, {
       headers: {
         Authorization: `Bearer ${TokenService.getAuthToken()}`,
       },

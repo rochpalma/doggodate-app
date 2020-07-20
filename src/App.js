@@ -10,7 +10,8 @@ import SelectedProfile from './components/SelectedProfile/SelectedProfile';
 import Meetup from './components/Meetup/Meetup';
 import Context from "./Context";
 import  './App.css';
-
+import TokenService from './services/token-service';
+import DoggodateApiService from './services/doggodate-api-service';
 
 export default class App extends Component {
   static contextType = Context;
@@ -19,6 +20,24 @@ export default class App extends Component {
     user: {},
     dogs: []
   }
+
+  //to be completed
+  getUserData = (user) => {
+  
+  };
+
+  //try
+  // componentDidMount() {
+  //   if (TokenService.getAuthToken()) {
+  //     DoggodateApiService.getUser().then((res) => {
+  //       this.getUserData(res);
+  //     });
+  //   }
+  // }
+
+  // getUserData = (user) => {
+  //   this.setUser(user);
+  // };
 
   render(){
     return (

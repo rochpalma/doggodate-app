@@ -28,7 +28,7 @@ class Signup extends Component {
             last_name.value = ''
             email.value = ''
             password.value = ''
-            this.props.history.push('/signin')
+            this.props.history.push('/setup')
         })
         .catch(err => {
             this.setState({ error: err.error.message })
