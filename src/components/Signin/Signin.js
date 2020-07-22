@@ -22,16 +22,17 @@ class Signin extends Component {
             email: email.value,
             password: password.value
         })
-            .then(res => {
-                email.value = '';
-                password.value = '';
-                TokenService.saveAuthToken(res.authToken);
-                this.handleLoginSuccess();
-                
-            })
-            .catch(err => {
-                this.setState({ error: err.error })
-            });
+        .then(res => {
+            email.value = '';
+            password.value = '';
+            TokenService.saveAuthToken(res.authToken);
+            TokenService.saveUserId(res.user_id);
+            this.handleLoginSuccess();
+            
+        })
+        .catch(err => {
+            this.setState({ error: err.error })
+        });
     }
 
     handleLoginSuccess = () => {
@@ -65,9 +66,9 @@ class Signin extends Component {
                                 <div className='form-fields'>                             
                                     <legend>Sign in to your account</legend>
                                     { (error) ? this.renderInvalidMessage() : null }                   
-                                    <label for='email'>Username</label>
+                                    <label htmlFor='email'>Username</label>
                                     <input type='text' name='email' id='email' required/>
-                                    <label for='password'>Password</label>
+                                    <label htmlFor='password'>Password</label>
                                     <input type='password' name='password' id='password' required/>
                                     {/* <Link to='/feed' className='btn'>Sign in</Link> 
                                     <Link to='/signup' className='btn'>Sign up</Link>    */}
