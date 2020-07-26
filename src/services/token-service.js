@@ -14,14 +14,24 @@ const TokenService = {
         return !!TokenService.getAuthToken();
     },
     saveUserId(id) {
-        console.log(window.localStorage.getItem('user_id'));
+        window.localStorage.setItem('user_id', id);
     },
     getUserId() {
         return window.localStorage.getItem('user_id');
     },
     clearUserId() {
         window.localStorage.removeItem('user_id');
+    },
+    saveDogId(id) {
+        window.localStorage.setItem('dog_id', id);
+    },
+    getDogId() {
+        return window.localStorage.getItem('dog_id');
+    },
+    clearDogId() {
+        window.localStorage.removeItem('dog_id');
     }
+
 }
 
 export default TokenService;
