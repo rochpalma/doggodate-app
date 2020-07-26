@@ -30,6 +30,15 @@ const TokenService = {
     },
     clearDogId() {
         window.localStorage.removeItem('dog_id');
+    },
+    saveOwnerId(id) {
+        window.localStorage.setItem('owner_id', id);
+    },
+    getOwnerId() {
+        return window.localStorage.getItem('owner_id');
+    },
+    clearOwnerId() {
+        window.localStorage.removeItem('owner_id');
     }
 
 }
