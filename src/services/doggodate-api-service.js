@@ -68,6 +68,20 @@ const DoggodateApiService = {
       : true
     );
   },
+  addEvent(newEvent) {
+    return fetch(`${config.API_ENDPOINT}/events`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(newEvent),
+    }).then((res) =>
+        !res.ok 
+        ? res.json().then((e) => Promise.reject(e)) 
+        : res.json()
+    );
+  },
 };
 
 export default DoggodateApiService;
