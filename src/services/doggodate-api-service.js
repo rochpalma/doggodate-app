@@ -14,7 +14,7 @@ const DoggodateApiService = {
         : res.json()
     );
   },
-  getDog() {
+  getDog(dogId) {
     return fetch(`${config.API_ENDPOINT}/dogs/${dogId}`, {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`,
