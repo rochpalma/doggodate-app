@@ -14,15 +14,14 @@ class Feed extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        const { event_name, description, created_at, start_time, end_time, location } = event.target;
+        const { event_name, description, start_time, end_time, location } = event.target;
 
         this.setState({ error: null });
-    
+        console.log(TokenService.getOwnerId())
         DoggodateApiService.addEvent({
             user_id: TokenService.getUserId(),
             event_name: event_name.value,
             description: description.value,
-            created_at: created_at.value,
             start_time: start_time.value,
             end_time: end_time.value,
             recipient: TokenService.getOwnerId(),
