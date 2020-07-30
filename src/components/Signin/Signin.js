@@ -37,9 +37,9 @@ class Signin extends Component {
 
     handleLoginSuccess = () => {
         DoggodateApiService.getUser()
-          .then((res) => {
-            this.context.getUserData(res);
-          })
+        //   .then((res) => {
+        //     this.context.getUserData(res);
+        //   })
           .then(() => this.props.history.push("/feed"));
     };
 
