@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 // })
 
 const DogsContext = React.createContext({
+    dogProfile: undefined,
     user: {},
     dogs: [],
     myDogs: [],
@@ -18,12 +19,18 @@ const DogsContext = React.createContext({
     getUserData: () => {},
     setSelectedDog: () => {},
     setSelectedEvent: () => {},
+    setMyDogs: () => {},
+    setDogProfile: () => {},
+    clearDogProfile: () => {},
+    setComments: () => {},
+    addComment: () => {},
 })
 
 export default DogsContext;
 
 export class DogsProvider extends Component {
     state = {
+        dogProfile: [],
         dogs: [],
         events: [],
         myDogs: [],
@@ -36,6 +43,10 @@ export class DogsProvider extends Component {
         (Array.isArray(dogs))
         ? this.setState({ dogs })
         : console.log('not an array');
+    }
+
+    setMyDogs = dogs => {
+        this.setState({ myDogs: dogs });
     }
 
     setSelectedDog = dog => {
@@ -60,6 +71,31 @@ export class DogsProvider extends Component {
         this.setState({ selectedEvent: undefined });
     }
 
+    getUserData = user => {
+        this.setState( {user} )
+
+    }
+
+    setDogProfile = dogProfile => {
+        this.setState({ dogProfile })
+    }
+
+    setComments = comments => {
+        this.setState({ comments })
+      }
+    
+    clearDogProfile = () => {
+        this.setDogProfile({ dogProfile: undefined })
+        this.setComments([])
+    }
+    
+    addComment = comment => {
+        this.setComments([
+            ...this.state.comments,
+            comment
+        ])
+    }
+
     render() {
         const contextValue = {
             dogs: this.state.dogs,
@@ -67,6 +103,10 @@ export class DogsProvider extends Component {
             selectedDog: this.state.selectedDog,
             setSelectedDog: this.setSelectedDog,
             clearSelectedDog: this.clearSelectedDog,
+            setDogProfile: this.setDogProfile,
+            setComments: this.setComments,
+            clearDogProfile: this.clearDogProfile,
+            addComment: this.addComment,
             setDogs: this.setDogs,
             events: this.state.events,
             selectedEvent: this.state.selectedEvent,
