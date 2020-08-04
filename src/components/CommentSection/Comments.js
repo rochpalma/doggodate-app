@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import Context from '../../Context';
 
 class Comments extends Component {
-    render() { 
+    static contextType = Context;
+
+    render() {
         return (  
             <div>
-                <section>
-                    <h3>Khun</h3>
-                    <p>cute</p>
-                </section>
+                <li>
+                    <h2>{this.props.user_id}</h2>        
+                    <p>{this.props.content} </p>
+                </li>
             </div>
         );
     }
