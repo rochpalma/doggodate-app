@@ -5,15 +5,21 @@ import PetDetails from '../PetDetails/PetDetails';
 import CommentSection from '../CommentSection/CommentSection';
 import  './Profile.css'
 
+
 class Profile extends Component {
     render() { 
         return (  
-            <div className='profile-container'>
-                <DogDP />
-                <UserButtons />
-                <PetDetails />
-                <CommentSection />
+            <div>
+                <main>
+                    <div className='profile-container'>
+                    <DogDP />
+                    <UserButtons />
+                    <PetDetails />
+                    {/* <CommentSection /> */}
+                    </div>
+                </main>
             </div>
+           
         );
     }
 }

@@ -28,7 +28,7 @@ class ProfileSetup extends Component {
             owner_id: TokenService.getUserId()
 
         })
-        .then(dog => {
+        .then(() => {
             full_name.value = ''
             age.value= ''
             about_me.value= ''
@@ -62,9 +62,9 @@ class ProfileSetup extends Component {
                                 <div className='form-fields'>
                                     <legend>Dog's Profile</legend>       
                                     <button>Add Photos</button>
-                                    <label htmlFors='full_name'>Name</label>
+                                    <label htmlFor='full_name'>Name</label>
                                     <input type='text' name='full_name' id='full_name' required/>
-                                    <label htmlFors='about_me'>About me</label>
+                                    <label htmlFor='about_me'>About me</label>
                                     <textarea id='about_me' name='about_me'
                                                 rows='5' cols='33'>
                                     </textarea>
@@ -76,15 +76,15 @@ class ProfileSetup extends Component {
                                     <select name='size' id='size' required>
                                     <option value='Small' selected>Small</option>
                                     </select>
-                                    <label htmlFors='age'>Age</label>
+                                    <label htmlFor='age'>Age</label>
                                     <input type='text' name='age' id='age'/>
                                     <div className='gender-box'>
                                         <label>Gender</label>
                                         <input type='radio' id='female' name='gender' value='female'
                                         checked />
-                                        <label htmlFors='female'>Female</label>
+                                        <label htmlFor='female'>Female</label>
                                         <input type='radio' id='male' name='gender' value='male' />
-                                        <label htmlFors='male'>Male</label>
+                                        <label htmlFor='male'>Male</label>
                                     </div>
                                     {/* <input type='submit' value='Save' id='submit' />  */}
                                     <button type='submit' className='btn'>Save</button>          

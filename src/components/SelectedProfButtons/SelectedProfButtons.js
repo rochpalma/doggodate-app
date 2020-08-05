@@ -7,10 +7,7 @@ class SelectedProfButtons extends Component {
             <div className='userBtn'>
                 <ul>
                     <li>
-                        <a href='#'>Paw</a>
-                    </li>
-                    <li>
-                        <Link to='/meetup'>Invite to Meet</Link>
+                        <Link to='/meetup' className='page-btn'>Invite to Meet</Link>
                     </li>
                 </ul>              
             </div>

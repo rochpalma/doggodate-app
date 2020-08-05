@@ -6,4 +6,22 @@ footer{
     background-color: lightblue;
     color: white;
     text-align: center;
+    flex-shrink: 0;
 }   
+
+/* 
+footer{
+    padding: 0 22%;
+    background-color: lightblue;
+    border-bottom: 1px #f7f7f9 solid;
+    margin-top: 20px;
+    height: 60px;
+    flex-shrink: 0;
+}  */
+
+
+footer p{
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 18px;
+}

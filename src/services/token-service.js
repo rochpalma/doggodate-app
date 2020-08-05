@@ -21,7 +21,35 @@ const TokenService = {
     },
     clearUserId() {
         window.localStorage.removeItem('user_id');
-    }
+    },
+    saveDogId(id) {
+        window.localStorage.setItem('dog_id', id);
+    },
+    getDogId() {
+        return window.localStorage.getItem('dog_id');
+    },
+    clearDogId() {
+        window.localStorage.removeItem('dog_id');
+    },
+    saveOwnerId(id) {
+        window.localStorage.setItem('owner_id', id);
+    },
+    getOwnerId() {
+        return window.localStorage.getItem('owner_id');
+    },
+    clearOwnerId() {
+        window.localStorage.removeItem('owner_id');
+    },
+    // saveUserName(name) {
+    //     window.localStorage.setItem('name', name);
+    // },
+    // getOwnerName() {
+    //     return window.localStorage.getItem('name');
+    // },
+    // clearOwnerName() {
+    //     window.localStorage.removeItem('name');
+    // }
+
 }
 
 export default TokenService;

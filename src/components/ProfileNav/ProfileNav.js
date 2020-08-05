@@ -1,9 +1,29 @@
 import React, { Component } from 'react';
+import Context from '../../Context';
 import { Link } from 'react-router-dom';
+import TokenService from '../../services/token-service';
 import logo from '../../images/logo/DoggoDate_02.png';
 import './ProfileNav.css';
 
 class ProfileNav extends Component {
+    static contextType = Context;
+
+    handleLogOut = () => {
+        TokenService.clearAuthToken();
+        // this.context.setUser({});
+        TokenService.clearDogId();
+        TokenService.clearOwnerId();
+        TokenService.clearUserId();
+        this.context.clearDogProfile();
+      };
+
+    renderLogout = () => {
+        return (
+            <Link to="/" onClick={() => this.handleLogOut()}>
+              Logout
+            </Link>
+          ); 
+    }
     render() { 
         return (  
             <nav>
@@ -16,8 +36,9 @@ class ProfileNav extends Component {
                         <Link to='/myprofile' className='nav-links'>My Profile</Link>
                     </li>
                     <li>
-                        <Link to='/logout' className='nav-links'>Logout</Link>
+                        <Link to='/myevents' className='nav-links'>My Events</Link>
                     </li>
+                    {this.renderLogout()}
                 </ul>
             </nav>
         );

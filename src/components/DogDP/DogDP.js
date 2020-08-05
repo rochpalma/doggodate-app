@@ -5,7 +5,7 @@ class DogDP extends Component {
     render() { 
         return (  
             <div>
-                <img src={dog1} alt='dog1' /> 
+                <img src={dog1} alt='dog1' className='dp-img'/> 
             </div>
         );
     }

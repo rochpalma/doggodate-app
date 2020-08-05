@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Context from "../../Context";
+import Context from '../../Context';
 import HomeNav from '../HomeNav/HomeNav';
 import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';

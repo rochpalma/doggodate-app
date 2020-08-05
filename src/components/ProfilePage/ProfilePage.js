@@ -6,7 +6,7 @@ import Footer from '../Footer/Footer';
 class ProfilePage extends Component {
     render() { 
         return (  
-            <div>
+            <div className='gray-bg profile-page'>
                 <ProfileNav />
                 <Profile />
                 <Footer />
