@@ -27,7 +27,7 @@ class PostComment extends Component {
             <form  
                 onSubmit={this.handleSubmit}  
             >
-                <div>
+                <div className='comment-fields-container'>
                 {/* <textarea
                     required
                     aria-label='Type a comment...'
@@ -37,8 +37,10 @@ class PostComment extends Component {
                     rows='3'
                     placeholder='Type a comment..'>
                 </textarea> */}
-                <input type="text" name="comment" id="comment" placeholder='Post a comment' required/>
-                <button type="submit">Post</button>
+                {/* <input type="text" name="comment" id="comment" placeholder='Post a comment' required/> */}
+                    <textarea name="comment" id="comment" placeholder='Post a comment' cols='50'
+                    rows='3' required/>
+                    <button type="submit" className='page-btn'>Post</button>
                 </div>
                
                     {/* <section>

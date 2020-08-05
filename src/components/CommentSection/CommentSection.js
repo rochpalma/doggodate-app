@@ -41,7 +41,9 @@ class CommentSection extends Component {
         return (
             <div className='comments-container'>
                 <h2>Comments</h2>
-                {comments}
+                <ul>
+                    {comments}
+                </ul>
                 <PostComment profile_id= {this.props.profile_id}/>
             </div>
         );

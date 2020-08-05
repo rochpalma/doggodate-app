@@ -6,14 +6,16 @@ class Comments extends Component {
 
     render() {
         return (  
-            <div>
-                <li>
-                    <h2>{this.props.user_id}</h2>        
-                    <p>{this.props.content} </p>
-                </li>
-            </div>
+            <li>
+                <div className='comment-box'>
+                <p>
+                    <span className='userName'>{this.props.user_id}</span>        
+                    {this.props.content} 
+                </p>
+                </div>
+            </li>
         );
     }
 }
  
-export default Comments;
+export default Comments;    
