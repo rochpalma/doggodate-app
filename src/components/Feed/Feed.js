@@ -7,12 +7,12 @@ import PetList from '../PetList/PetList'
 class Feed extends Component {
     render() { 
         return (  
-            <div>
+            <>
                 <ProfileNav />
                 <PetList />
                 {/* <Profile /> */}
                 <Footer />
-            </div>
+            </>
         );
     }
 }

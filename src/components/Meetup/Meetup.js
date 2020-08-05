@@ -46,27 +46,29 @@ class Feed extends Component {
             <div>
                 <ProfileNav />
                 <main>
-                    <div className='userform-container'>
+                    <div className='event-form-container'>
                         <form
+        
                             onSubmit={this.handleSubmit}
                         >
-                            {(error) ? this.renderInvalidMessage() : null}                           
-                            <fieldset>
-                            <div className='form-fields'>
-                            <legend>Create an event</legend>               
+                            {(error) ? this.renderInvalidMessage() : null}                            
+                            <div className='event-form-fields event-form-border'>
+                                <h2>Create an event</h2>               
                                 <label htmlFor="event_name">Event Name</label>
                                 <input type="text" name="event_name" id="event_name" required/>
                                 <label htmlFor="description">Description</label>
                                 <input type="text" name="description" id="description" required/>
+                                <label htmlFor="event_date">Date</label>
+                                <input type="text" name="event_date" id="event_date" required/>
                                 <label htmlFor="start-time">Start Time</label>
                                 <input type="text" name="start_time" id="start_time" required/>
                                 <label htmlFor="end_time">End Time</label>
                                 <input type="text" name="end_time" id="end_time" required/>
                                 <label htmlFor="location">Location</label>
                                 <input type="text" name="location" id="location" required/>         
-                                <input type="submit" value="Create" id="submit"/> 
+                                <input type="submit" value="Create" id="submit" className='page-btn'/> 
                             </div>                           
-                            </fieldset>         
+                                   
                         </form>
                     </div>
                 </main>

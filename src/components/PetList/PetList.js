@@ -20,25 +20,21 @@ class Feed extends Component {
     }
     render() {
         const dogs = this.context.dogs.map((dog, index) => {
-            return <ul>
+            return (
+                    <ul>
                         <BriefProfile 
                             key={index}
                             id={dog.id} 
                             name={dog.full_name} 
                             about_me={dog.about_me}
                         />
-                    </ul>
+                    </ul>)
         }); 
-        return (  
-            <div className='pet-container'>
-                <h1>Dogs near me</h1>
-                {dogs}
-                {/* <ul>
-                    <BriefProfile />
-                    <BriefProfile />
-                    <BriefProfile />
-                </ul> */}
-            </div>
+        return (   
+                <div className='pet-container'>
+                    <h1 className='subheading'>Dogs near me</h1>
+                    {dogs}
+                </div> 
         );
     }
 }

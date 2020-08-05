@@ -13,29 +13,9 @@ import  './App.css';
 import TokenService from './services/token-service';
 import DoggodateApiService from './services/doggodate-api-service';
 import { DogsProvider } from './Context';
+import MyEvents from './components/MyEvents/MyEvents';
 
 export default class App extends Component {
-  // static contextType = Context;
-
-  // state = {
-  //   user: {},
-  //   dogs: []
-  // }
-
-
-  //try
-  // componentDidMount() {
-  //   if (TokenService.getAuthToken()) {
-  //     DoggodateApiService.getUser().then((res) => {
-  //       this.getUserData(res);
-  //     });
-  //   }
-  // }
-
-  // getUserData = (user) => {
-  //   this.setUser(user);
-  // };
-
   render(){
     return (
       <DogsProvider>
@@ -49,6 +29,7 @@ export default class App extends Component {
           <Route exact path = '/logout' component={LandingPage}/>
           <Route exact path = '/dogs/:id' component={SelectedProfile}/>
           <Route exact path = '/meetup' component={Meetup}/>
+          <Route exact path = '/myevents' component={MyEvents}/>
         </div>
       </DogsProvider>
     );

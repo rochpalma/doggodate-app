@@ -11,9 +11,11 @@ import React, { Component } from 'react';
 const DogsContext = React.createContext({
     dogProfile: undefined,
     user: {},
+    comments: [],
     dogs: [],
     myDogs: [],
     events:[],
+    myEvents: [],
     selectedDog: [],
     selectedEvent: undefined,
     getUserData: () => {},
@@ -34,6 +36,8 @@ export class DogsProvider extends Component {
         dogs: [],
         events: [],
         myDogs: [],
+        myEvents: [],
+        comments: [],
         selectedEvent: [],
         selectedDog: [],
 
@@ -61,6 +65,10 @@ export class DogsProvider extends Component {
         (Array.isArray(events))
         ? this.setState({ events })
         : console.log('not an array');
+    }
+
+    setMyEvents = events => {
+        this.setState({ myEvents: events });
     }
 
     setSelectedEvent = event => {
@@ -100,14 +108,18 @@ export class DogsProvider extends Component {
         const contextValue = {
             dogs: this.state.dogs,
             myDogs: this.state.myDogs,
+            myEvents: this.state.myEvents,
             selectedDog: this.state.selectedDog,
             setSelectedDog: this.setSelectedDog,
             clearSelectedDog: this.clearSelectedDog,
             setDogProfile: this.setDogProfile,
+            comments: this.state.comments,
             setComments: this.setComments,
             clearDogProfile: this.clearDogProfile,
             addComment: this.addComment,
             setDogs: this.setDogs,
+            setMyDogs:this.setMyDogs,
+            setMyEvents:this.setMyEvents,
             events: this.state.events,
             selectedEvent: this.state.selectedEvent,
             setSelectedEvent: this.setSelectedEvent,

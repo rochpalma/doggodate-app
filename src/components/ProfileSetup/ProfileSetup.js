@@ -28,7 +28,7 @@ class ProfileSetup extends Component {
             owner_id: TokenService.getUserId()
 
         })
-        .then(dog => {
+        .then(() => {
             full_name.value = ''
             age.value= ''
             about_me.value= ''
