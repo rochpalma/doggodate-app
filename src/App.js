@@ -14,22 +14,24 @@ import TokenService from './services/token-service';
 import DoggodateApiService from './services/doggodate-api-service';
 import { DogsProvider } from './Context';
 import MyEvents from './components/MyEvents/MyEvents';
+import PrivateRoute from './Utils/PrivateRoute'
+import PublicOnlyRoute from './Utils/PublicOnlyRoute'
 
 export default class App extends Component {
   render(){
     return (
       <DogsProvider>
         <div className='App'>
-          <Route exact path = '/' component={LandingPage}/>
-          <Route exact path = '/signin' component={Signin}/>
-          <Route exact path = '/signup' component={Signup}/>
-          <Route exact path = '/setup' component={ProfileSetup}/>
-          <Route exact path = '/myprofile' component={ProfilePage}/>
-          <Route exact path = '/feed' component={Feed}/>
-          <Route exact path = '/logout' component={LandingPage}/>
-          <Route exact path = '/dogs/:id' component={SelectedProfile}/>
-          <Route exact path = '/meetup' component={Meetup}/>
-          <Route exact path = '/myevents' component={MyEvents}/>
+          <PublicOnlyRoute exact path = '/' component={LandingPage}/>
+          <PublicOnlyRoute exact path = '/signin' component={Signin}/>
+          <PublicOnlyRoute exact path = '/signup' component={Signup}/>
+          <PrivateRoute exact path = '/setup' component={ProfileSetup}/>
+          <PrivateRoute exact path = '/myprofile' component={ProfilePage}/>
+          <PrivateRoute exact path = '/feed' component={Feed}/>
+          <PublicOnlyRoute exact path = '/logout' component={LandingPage}/>
+          <PrivateRoute exact path = '/dogs/:id' component={SelectedProfile}/>
+          <PrivateRoute exact path = '/meetup' component={Meetup}/>
+          <PrivateRoute exact path = '/myevents' component={MyEvents}/>
         </div>
       </DogsProvider>
     );
