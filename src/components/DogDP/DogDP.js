@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import dog1 from '../../images/dog-1.jpg';   
+import Context from '../../Context';
 
 class DogDP extends Component {
-    render() { 
-        return (  
+    static contextType = Context;
+
+    render() {  
+        return(
             <div>
-                <img src={dog1} alt='dog1' className='dp-img'/> 
-            </div>
-        );
+                <img src={this.props.picture} alt='dog1' className='dp-img'/> 
+            </div
+        >)
     }
 }
  

@@ -14,7 +14,7 @@ class Feed extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        const { event_name, description, start_time, end_time, location } = event.target;
+        const { event_name, description, start_time, end_time, location, event_date } = event.target;
 
         this.setState({ error: null });
         console.log(TokenService.getOwnerId())
@@ -26,13 +26,13 @@ class Feed extends Component {
             end_time: end_time.value,
             recipient: TokenService.getOwnerId(),
             location: location.value,
+            event_date: event_date.value,
         })
         .then(event => {
             //needs to be redirected to list of events
         })
         .catch(err => {
-            console.log(err)
-            // this.setState({ error: err.error })
+            this.setState({ error: err.error })
         })
     }
 
@@ -47,8 +47,7 @@ class Feed extends Component {
                 <ProfileNav />
                 <main>
                     <div className='event-form-container'>
-                        <form
-        
+                        <form     
                             onSubmit={this.handleSubmit}
                         >
                             {(error) ? this.renderInvalidMessage() : null}                            
@@ -59,16 +58,15 @@ class Feed extends Component {
                                 <label htmlFor="description">Description</label>
                                 <input type="text" name="description" id="description" required/>
                                 <label htmlFor="event_date">Date</label>
-                                <input type="text" name="event_date" id="event_date" required/>
+                                <input type="date" name="event_date" id="event_date" required/>
                                 <label htmlFor="start-time">Start Time</label>
-                                <input type="text" name="start_time" id="start_time" required/>
+                                <input type="time" name="start_time" id="start_time" required/>
                                 <label htmlFor="end_time">End Time</label>
-                                <input type="text" name="end_time" id="end_time" required/>
+                                <input type="time" name="end_time" id="end_time" required/>
                                 <label htmlFor="location">Location</label>
                                 <input type="text" name="location" id="location" required/>         
                                 <input type="submit" value="Create" id="submit" className='page-btn'/> 
-                            </div>                           
-                                   
+                            </div>                                                         
                         </form>
                     </div>
                 </main>

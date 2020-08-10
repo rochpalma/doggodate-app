@@ -14,7 +14,7 @@ class ProfileNav extends Component {
         TokenService.clearDogId();
         TokenService.clearOwnerId();
         TokenService.clearUserId();
-        this.context.clearDogProfile();
+        //this.context.clearDogProfile();
       };
 
     renderLogout = () => {
@@ -33,10 +33,13 @@ class ProfileNav extends Component {
                         <Link to='/feed' className='nav-links'>Home</Link>
                     </li>
                     <li>
-                        <Link to='/myprofile' className='nav-links'>My Profile</Link>
+                        <Link to='/mydogprofile' className='nav-links'>My Dog Profile</Link>
                     </li>
                     <li>
                         <Link to='/myevents' className='nav-links'>My Events</Link>
+                    </li>
+                    <li>
+                        <Link to='/myprofile' className='nav-links'>My Profile</Link>
                     </li>
                     {this.renderLogout()}
                 </ul>

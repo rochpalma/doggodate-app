@@ -8,10 +8,10 @@ class Comments extends Component {
         return (  
             <li>
                 <div className='comment-box'>
-                <p>
-                    <span className='userName'>{this.props.user_id}</span>        
+                <div>
+                    <span className='userName'>{this.props.full_name}:</span>        
                     {this.props.content} 
-                </p>
+                </div>
                 </div>
             </li>
         );

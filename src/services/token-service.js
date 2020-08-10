@@ -1,3 +1,4 @@
+import jwtDecode from 'jwt-decode'
 import config from '../config';
 
 const TokenService = {
@@ -50,6 +51,12 @@ const TokenService = {
     //     window.localStorage.removeItem('name');
     // }
 
+    parseJwt(jwt) {
+        return jwtDecode(jwt);
+    },
+    readJwtToken() {
+        return TokenService.parseJwt(TokenService.getAuthToken());
+    },
 }
 
 export default TokenService;

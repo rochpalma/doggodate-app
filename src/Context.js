@@ -10,7 +10,8 @@ import React, { Component } from 'react';
 
 const DogsContext = React.createContext({
     dogProfile: undefined,
-    user: {},
+    // user: {},
+    user: [],
     comments: [],
     dogs: [],
     myDogs: [],
@@ -40,6 +41,7 @@ export class DogsProvider extends Component {
         comments: [],
         selectedEvent: [],
         selectedDog: [],
+        user: []
 
     }
 
@@ -81,7 +83,6 @@ export class DogsProvider extends Component {
 
     getUserData = user => {
         this.setState( {user} )
-
     }
 
     setDogProfile = dogProfile => {
@@ -125,6 +126,8 @@ export class DogsProvider extends Component {
             setSelectedEvent: this.setSelectedEvent,
             clearSelectedEvent: this.clearSelectedEvent,
             setEvents: this.setEvents,
+            user: this.state.user,
+            getUserData: this.getUserData
         }
 
         return (

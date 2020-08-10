@@ -11,7 +11,9 @@ import DoggodateApiService from '../../services/doggodate-api-service';
 class Signin extends Component {
     static contextType = Context;
 
-    state = { error: null };
+    state = { 
+        error: null,
+    };
 
     handleSubmit = event => {
         event.preventDefault();
@@ -26,49 +28,28 @@ class Signin extends Component {
             email.value = '';
             password.value = '';
             TokenService.saveAuthToken(res.authToken);
-            TokenService.saveUserId(res.user_id);
-            this.handleLoginSuccess();
-            
+            this.handleLoginSuccess();       
         })
         .catch(err => {
-            console.log('merong error sa login')
             this.setState({ error: err.error })
         });
     }
 
     handleLoginSuccess = () => {
-        DoggodateApiService.getUser()
-        //   .then((res) => {
-        //     this.context.getUserData(res);
-        //   })
-         .then(() => this.props.history.push("/feed"))
-         .catch(err => {
-            console.log(err)
-         })
+         DoggodateApiService.getUser()
+            .then(user => {
+                this.context.getUserData(user);
+                TokenService.saveUserId(user.id);
+                this.props.history.push("/feed");
+            })
+            .catch(this.context.setError);
+        DoggodateApiService.getDogsByOwner(TokenService.getUserId())
+        .then(dogs => {
+            this.context.setMyDogs(dogs)
+        }
+        )
+        .catch(this.context.setError);
            
-        //  const userId = TokenService.getUserId();
-        //  console.log('owner ' + userId)
-        //  DoggodateApiService.getDogsByOwner(userId)
-        //     .then(dogs => {
-        //         this.context.setMyDogs(dogs)
-        //         console.log('my dogs' + JSON.stringify(dogs));
-        //         console.log(this.context.myDogs)
-        //        // TokenService.saveDogId(this.context.myDogs[0].id)
-        //     }
-                
-        //     //console.log(JSON.stringify(dogs))
-        //     )
-        //     .catch(this.context.setError);
-        //    // console.log('dog id ' + TokenService.getDogId())
-        // DoggodateApiService.getComments(TokenService.getDogId())
-        //     .then(res => {
-        //        // this.context.clearDogProfile();
-        //         this.context.setComments(res);
-        //         console.log("context" +JSON.stringify(res))     
-        //     })
-        //     // .then(this.context.setComments)
-        //     // .catch(this.context.setError);
-        //     .catch(err => console.log(err))
     };
 
     renderInvalidMessage = () => {
@@ -82,7 +63,7 @@ class Signin extends Component {
         return (  
             <div className='main-display signin-bg'>
                 <header>
-                    <Link to ='/'><img src={logo} alt='dog tinder logo' className='logo'/></Link>
+                    <Link to ='/'><img src={logo} alt='doggodate logo' className='logo'/></Link>
                 </header>
                 <main>
                     <div className='userform-container'>
@@ -98,8 +79,6 @@ class Signin extends Component {
                                     <input type='text' name='email' id='email' required/>
                                     <label htmlFor='password'>Password</label>
                                     <input type='password' name='password' id='password' required/>
-                                    {/* <Link to='/feed' className='btn'>Sign in</Link> 
-                                    <Link to='/signup' className='btn'>Sign up</Link>    */}
                                     <button type='submit' className="page-btn">
                                         Log In
                                     </button>

@@ -2,6 +2,7 @@ import config from "../config";
 import TokenService from "./token-service";
 
 const DoggodateApiService = {
+  
   //dogs
   getDogs() {
     return fetch(`${config.API_ENDPOINT}/dogs`, {
@@ -53,8 +54,8 @@ const DoggodateApiService = {
   //users
   getUser() {
     //remove temp
-    // return fetch(`${config.API_ENDPOINT}/users/getdetails`, {
-    return fetch(`${config.API_ENDPOINT}/users/`, {
+    return fetch(`${config.API_ENDPOINT}/users/getdetails`, {
+    // return fetch(`${config.API_ENDPOINT}/users/`, {
       headers: {
         Authorization: `Bearer ${TokenService.getAuthToken()}`,
       },

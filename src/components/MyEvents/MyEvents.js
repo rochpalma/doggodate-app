@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import Context from '../../Context';
 import DoggodateApiService from '../../services/doggodate-api-service';
 import ProfileNav from '../ProfileNav/ProfileNav';
+import TokenService from '../../services/token-service';
 
 class MyEvents extends Component {
     static contextType = Context;
 
     componentDidMount() {
-        DoggodateApiService.getMyEvents()
+        DoggodateApiService.getMyEvents(TokenService.getUserId())
             .then(events => {
                 this.context.setMyEvents(events);
             })
@@ -17,24 +18,39 @@ class MyEvents extends Component {
     render() {
         const myEvents = this.context.myEvents.map((event, index) => {
             return (
-                <li>
+                <li className="panel panel-primary">
                     <section>
-                        <h2>Meetup with {event.recipient}</h2>
-                        <h3>{event.event_name}</h3>
-                        <p>{event.description}</p>
-                        <p>{event.location}</p>
-                        <p>{event.start_time} - {event.end_time}</p>
+                    <div className="panel-heading">
+                        <h2 className="panel-title">Meetup with {event.full_name}</h2>
+                    </div>
+                    <div className="panel-body">
+                    <div className="row">                             
+                        <div className="col-xs-9">{event.event_name}</div>                   
+                    </div>
+                    <div className="row">                             
+                        <div className="col-xs-9">{event.description}</div>                   
+                    </div>
+                    <div className="row">                             
+                        <div className="col-xs-9">{event.location}</div>                   
+                    </div>
+                    <div className="row">                             
+                        <div className="col-xs-9">{event.start_time} - {event.end_time}</div>                   
+                    </div>
+                       
+                    </div>
                     </section> 
                 </li>
             )
         }); 
         return (  
-            <div>
+            <div className='PagWrapper'>
                 <ProfileNav />
-                <h1>Events</h1>
+                <div className='MainContent'>
+                <h1 className='center'>Events</h1>
                 <ul>
                     {myEvents}
                 </ul>
+                </div>
               
             </div>
         );

@@ -5,12 +5,53 @@ import Footer from '../Footer/Footer';
 import './ProfileSetup.css';
 import DoggodateApiService from '../../services/doggodate-api-service';
 import TokenService from '../../services/token-service';
+import axios from 'axios';
 
 class ProfileSetup extends Component {
     static contextType = Context;
 
     state = {
-        error: null
+        error: null,
+        success : false,
+        url : ""
+    }
+
+    handleUpload = event => {
+        let file = this.uploadInput.files[0];
+        // Split the filename to get the name and type
+        let fileParts = this.uploadInput.files[0].name.split('.');
+        let fileName = fileParts[0];
+        let fileType = fileParts[1];
+        console.log("Preparing the upload");
+        axios.post("http://localhost:8000/sign_s3",{
+            fileName : fileName,
+            fileType : fileType
+        })
+        .then(response => {
+            var returnData = response.data.data.returnData;
+            var signedRequest = returnData.signedRequest;
+            var url = returnData.url;
+            this.setState({url: url})
+            console.log("Received a signed request " + signedRequest);
+            
+            // Put the fileType in the headers for the upload
+            var options = {
+                headers: {
+                'Content-Type': fileType
+                }
+            };
+            axios.put(signedRequest,file,options)
+            .then(result => {
+                console.log("Response from s3")
+                this.setState({success: true});
+            })
+            .catch(error => {
+                alert("ERROR " + JSON.stringify(error));
+            })
+        })
+        .catch(error => {
+        alert(JSON.stringify(error));
+        })
     }
 
     handleSubmit = event => {
@@ -25,7 +66,8 @@ class ProfileSetup extends Component {
             breed: breed.value,
             size: size.value,
             gender: gender.value,
-            owner_id: TokenService.getUserId()
+            owner_id: TokenService.getUserId(),
+            picture: this.state.url
 
         })
         .then(() => {
@@ -60,8 +102,13 @@ class ProfileSetup extends Component {
                             {(error) ? this.renderInvalidMessage() : null}
                             <fieldset>
                                 <div className='form-fields'>
-                                    <legend>Dog's Profile</legend>       
-                                    <button>Add Photos</button>
+                                    <legend>Dog's Profile</legend> 
+                                    <input onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file"/> 
+                                    <button
+                                        onClick={this.handleUpload}
+                                    >
+                                        Add Photos
+                                    </button>
                                     <label htmlFor='full_name'>Name</label>
                                     <input type='text' name='full_name' id='full_name' required/>
                                     <label htmlFor='about_me'>About me</label>
