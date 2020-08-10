@@ -7,9 +7,9 @@ class UserButtons extends Component {
         return (  
             <div className='userBtn'>
                 <ul>
-                    <li>
+                    {/* <li>
                         <Link to='/setup'  className='page-btn'>Add Dog</Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to='/setup'  className='page-btn'>Edit Profile</Link>
                     </li>
