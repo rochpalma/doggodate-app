@@ -18,6 +18,7 @@ class Feed extends Component {
             })
             .catch(this.context.setError);
     }
+    
     render() {
         const dogs = this.context.dogs.map((dog, index) => {
             return (
@@ -27,6 +28,7 @@ class Feed extends Component {
                             id={dog.id} 
                             name={dog.full_name} 
                             about_me={dog.about_me}
+                            picture={dog.picture}
                         />
                     </ul>)
         }); 

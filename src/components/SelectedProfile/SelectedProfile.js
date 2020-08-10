@@ -42,7 +42,7 @@ class SelectedProfile extends Component {
         return (
             <Context.Consumer>
             { (context) => {
-                const {full_name, breed, age, about_me, size, gender, id, city, zip_code }  = context.selectedDog;
+                const {full_name, breed, age, about_me, size, gender, id, city, picture }  = context.selectedDog;
                 console.log('val'+JSON.stringify(context.comments))
                 TokenService.saveOwnerId(this.context.selectedDog.owner_id);
                 // TokenService.saveDogId(this.context.selectedDog.id);
@@ -54,7 +54,7 @@ class SelectedProfile extends Component {
                         <main>
                             <div className='profile-container'>
                                 {/* <section className='sample'> */}
-                                <img src={dog3} alt='dog3' className='dp-img'/> 
+                                <img src={picture} alt='dog3' className='dp-img'/> 
                                 <SelectedProfButtons />
                                 <section className='pet-details'>
                                     <h2>{full_name}</h2>
