@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Context from '../../Context';
 import DoggodateApiService from '../../services/doggodate-api-service';
 import ProfileNav from '../ProfileNav/ProfileNav';
+import { Link } from 'react-router-dom';
 
 class MyProfile extends Component {
     static contextType = Context;
@@ -28,7 +29,7 @@ class MyProfile extends Component {
                                         <div className="panel-heading">
                                             <h2 className="panel-title">PERSON INFORMATION</h2>
                                             <div className='update-btn-container'>
-                                                <a href="#"  className="update-btn btn btn-primary btn-sm">Update</a>
+                                                <Link to='/personupdate' className='update-btn btn btn-primary btn-sm'>Update</Link>
                                             </div>
                                             <br/>
                                         </div>
@@ -50,7 +51,7 @@ class MyProfile extends Component {
                                         <div className="panel-heading">
                                             <h2 className="panel-title">LOGIN INFORMATION</h2>
                                             <div className='update-btn-container'>
-                                                <a href="#"  className="update-btn btn  btn-primary btn-sm">Update</a>
+                                            <Link to='/loginupdate' className='update-btn btn btn-primary btn-sm'>Update</Link>
                                             </div>
                                             <br/>
                                         </div>
@@ -74,7 +75,7 @@ class MyProfile extends Component {
                                         <div className="panel-heading">
                                             <h2 className="panel-title">PHONE INFORMATION</h2>
                                             <div className='update-btn-container'>
-                                                <a href="#"  className="update-btn btn btn-primary btn-sm">Update</a>
+                                            <Link to='/phoneupdate' className='update-btn btn btn-primary btn-sm'>Update</Link>
                                             </div>
                                             <br/>
                                         </div>
