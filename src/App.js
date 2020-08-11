@@ -17,6 +17,9 @@ import MyEvents from './components/MyEvents/MyEvents';
 import MyProfile from './components/MyProfile/MyProfile';
 import PrivateRoute from './Utils/PrivateRoute'
 import PublicOnlyRoute from './Utils/PublicOnlyRoute'
+import PersonUpdate from './components/PersonUpdate/PersonUpdate';
+import LoginUpdate from './components/LoginUpdate/LoginUpdate';
+import PhoneUpdate from './components/PhoneUpdate/PhoneUpdate';
 
 export default class App extends Component {
   render(){
@@ -26,7 +29,7 @@ export default class App extends Component {
           <PublicOnlyRoute exact path = '/' component={LandingPage}/>
           <PublicOnlyRoute exact path = '/signin' component={Signin}/>
           <PublicOnlyRoute exact path = '/signup' component={Signup}/>
-          <PrivateRoute exact path = '/setup' component={ProfileSetup}/>
+          <PublicOnlyRoute exact path = '/setup' component={ProfileSetup}/>
           <PrivateRoute exact path = '/mydogprofile' component={ProfilePage}/>
           <PrivateRoute exact path = '/feed' component={Feed}/>
           <PublicOnlyRoute exact path = '/logout' component={LandingPage}/>
@@ -34,6 +37,9 @@ export default class App extends Component {
           <PrivateRoute exact path = '/meetup' component={Meetup}/>
           <PrivateRoute exact path = '/myevents' component={MyEvents}/>
           <PrivateRoute exact path = '/myprofile' component={MyProfile}/>
+          <PrivateRoute exact path = '/personupdate' component={PersonUpdate}/>
+          <PrivateRoute exact path = '/loginupdate' component={LoginUpdate}/>
+          <PrivateRoute exact path = '/phoneupdate' component={PhoneUpdate}/>
         </div>
       </DogsProvider>
     );
