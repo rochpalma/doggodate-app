@@ -29,7 +29,7 @@ export default class App extends Component {
           <PublicOnlyRoute exact path = '/' component={LandingPage}/>
           <PublicOnlyRoute exact path = '/signin' component={Signin}/>
           <PublicOnlyRoute exact path = '/signup' component={Signup}/>
-          <PublicOnlyRoute exact path = '/setup' component={ProfileSetup}/>
+          <PrivateRoute exact path = '/setup' component={ProfileSetup}/>
           <PrivateRoute exact path = '/mydogprofile' component={ProfilePage}/>
           <PrivateRoute exact path = '/feed' component={Feed}/>
           <PublicOnlyRoute exact path = '/logout' component={LandingPage}/>

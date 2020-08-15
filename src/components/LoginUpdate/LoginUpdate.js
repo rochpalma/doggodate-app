@@ -15,6 +15,7 @@ class LoginUpdate extends Component {
         event.preventDefault();
         const { password } = event.target;
 
+
         this.setState({ error: null });
         DoggodateApiService.updateUser(TokenService.getUserId(),{
             password:  password.value,
@@ -56,6 +57,15 @@ class LoginUpdate extends Component {
                                         </div>
                                         <div className="col-xs-9">
                                             <p>{context.user.email}</p>
+                                        </div>
+                                                        
+                                    </div>
+                                    <div className="row">								   
+                                        <div className="col-xs-3 text-right">
+                                            <label htmlFor='password'>Old Password</label>
+                                        </div>
+                                        <div className="col-xs-9">
+                                            <input type='password' name='oldPassword' id='oldPassword'/>
                                         </div>
                                                         
                                     </div>
