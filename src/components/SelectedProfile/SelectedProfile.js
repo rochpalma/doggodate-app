@@ -12,6 +12,7 @@ import icon_gender from '../../images/icons-desc/Gender.png';
 import icon_age from '../../images/icons-desc/Icon_Age.png';
 import icon_breed from '../../images/icons-desc/Icon_Breed.png';
 import icon_size from '../../images/icons-desc/Icon_Size.png';
+import PetDetails from '../PetDetails/PetDetails';
 
 
 class SelectedProfile extends Component {
@@ -56,8 +57,10 @@ class SelectedProfile extends Component {
                                 {/* <section className='sample'> */}
                                 <img src={picture} alt='dog3' className='dp-img'/> 
                                 <SelectedProfButtons />
+                                
                                 <section className='pet-details'>
-                                    <h2>{full_name}</h2>
+                                    <PetDetails dog={context.selectedDog} />
+                                    {/* <h2>{full_name}</h2>
                                     <div className='dog-info'>
                                         <span>
                                             <img src={icon_location} className='icons' />
@@ -81,7 +84,7 @@ class SelectedProfile extends Component {
                                         </span>
                                         
                                         <p className='pet-desc'>{about_me}</p>
-                                    </div>
+                                    </div> */}
                                 </section>
                                 <CommentSection comments={context.comments} profile_id= {id}/>
                                 {/* </section> */}

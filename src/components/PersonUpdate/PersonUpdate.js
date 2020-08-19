@@ -32,14 +32,12 @@ class PersonUpdate extends Component {
     };
 
     render() {
-        return (
-            
+        return (    
             <Context.Consumer> 
                 { (context) => {
-                    // let full_name = context.user.full_name.split(' ');
-                    // let first_name = full_name.slice(0, -1).join("");
-                    // let last_name = full_name.pop();
-                    // console.log(full_name)
+                    let full_name = context.user.full_name.split(' ');
+                    let first_name = full_name.slice(0, -1).join("");
+                    let last_name = full_name.pop();
                     return(
                      <div className='PageWrapper'>
                      <ProfileNav />
@@ -60,13 +58,13 @@ class PersonUpdate extends Component {
                                              <label htmlFor='first_name'>First Name</label>
                                          </div>
                                          <div className="col-xs-9">
-                                             {/* <input type='text' name='first_name' id='first_name' value={first_name} required/> */}
+                                             <input type='text' name='first_name' id='first_name' defaultValue={first_name} required/>
                                          </div>
                                          <div className="col-xs-3 text-right">
                                              <label htmlFor='last_name'>Last Name</label>
                                          </div>
                                          <div className="col-xs-9">
-                                             {/* <input type='text' name='last_name' id='last_name' value={last_name} required/>	 */}
+                                             <input type='text' name='last_name' id='last_name' defaultValue={last_name} required/>	
                                          </div>	          							
                                      </div>
                                      <div className="row">								   

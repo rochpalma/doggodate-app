@@ -18,6 +18,8 @@ const DogsContext = React.createContext({
     events:[],
     myEvents: [],
     selectedDog: [],
+    sizes: [],
+    breeds:[],
     selectedEvent: undefined,
     getUserData: () => {},
     setSelectedDog: () => {},
@@ -27,6 +29,8 @@ const DogsContext = React.createContext({
     clearDogProfile: () => {},
     setComments: () => {},
     addComment: () => {},
+    getBreeds: () => {},
+    getSizes: () => {},
 })
 
 export default DogsContext;
@@ -41,7 +45,9 @@ export class DogsProvider extends Component {
         comments: [],
         selectedEvent: [],
         selectedDog: [],
-        user: []
+        user: [],
+        sizes: [],
+        breeds:[],
 
     }
 
@@ -91,7 +97,15 @@ export class DogsProvider extends Component {
 
     setComments = comments => {
         this.setState({ comments })
-      }
+    }
+
+    getBreeds = breeds => {
+        this.setState({ breeds })
+    }
+
+    getSizes = sizes => {
+        this.setState({ sizes })
+    }
     
     clearDogProfile = () => {
         this.setDogProfile({ dogProfile: undefined })
@@ -127,7 +141,11 @@ export class DogsProvider extends Component {
             clearSelectedEvent: this.clearSelectedEvent,
             setEvents: this.setEvents,
             user: this.state.user,
-            getUserData: this.getUserData
+            getUserData: this.getUserData,
+            sizes: this.state.sizes,
+            breeds:this.state.breeds,
+            getBreeds: this.getBreeds,
+            getSizes: this.getSizes,
         }
 
         return (

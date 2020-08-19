@@ -57,7 +57,9 @@ class Profile extends Component {
                     <>
                         <DogDP picture={dog.picture}/>
                         <UserButtons />
-                        <PetDetails dog={dog}/>
+                        <section className='pet-details'>
+                            <PetDetails dog={dog}/>
+                        </section>
                     </>
                 ) 
             }  

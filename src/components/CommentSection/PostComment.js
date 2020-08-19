@@ -32,7 +32,7 @@ class PostComment extends Component {
                 <div className='comment-fields-container'>
                     <textarea name="comment" id="comment" placeholder='Post a comment' cols='50'
                     rows='3' required/>
-                    <button type="submit" className='page-btn'>Post</button>
+                    <button type="submit" className='profile-btn'>Post</button>
                 </div>
             </form>
         );

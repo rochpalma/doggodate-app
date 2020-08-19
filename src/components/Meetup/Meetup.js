@@ -30,6 +30,8 @@ class Feed extends Component {
         })
         .then(event => {
             //needs to be redirected to list of events
+            this.props.history.push("/myevents");
+            
         })
         .catch(err => {
             this.setState({ error: err.error })

@@ -41,22 +41,13 @@ const TokenService = {
     clearOwnerId() {
         window.localStorage.removeItem('owner_id');
     },
-    // saveUserName(name) {
-    //     window.localStorage.setItem('name', name);
-    // },
-    // getOwnerName() {
-    //     return window.localStorage.getItem('name');
-    // },
-    // clearOwnerName() {
-    //     window.localStorage.removeItem('name');
-    // }
-
     parseJwt(jwt) {
         return jwtDecode(jwt);
     },
     readJwtToken() {
         return TokenService.parseJwt(TokenService.getAuthToken());
     },
+
 }
 
 export default TokenService;

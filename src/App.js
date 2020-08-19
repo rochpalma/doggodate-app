@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage';
 import Signin from './components/Signin/Signin';
 import Signup from './components/Signup/Signup';
@@ -8,11 +7,6 @@ import ProfilePage from './components/ProfilePage/ProfilePage';
 import Feed from './components/Feed/Feed';
 import SelectedProfile from './components/SelectedProfile/SelectedProfile';
 import Meetup from './components/Meetup/Meetup';
-import Context from "./Context";
-import  './App.css';
-import TokenService from './services/token-service';
-import DoggodateApiService from './services/doggodate-api-service';
-import { DogsProvider } from './Context';
 import MyEvents from './components/MyEvents/MyEvents';
 import MyProfile from './components/MyProfile/MyProfile';
 import PrivateRoute from './Utils/PrivateRoute'
@@ -20,6 +14,10 @@ import PublicOnlyRoute from './Utils/PublicOnlyRoute'
 import PersonUpdate from './components/PersonUpdate/PersonUpdate';
 import LoginUpdate from './components/LoginUpdate/LoginUpdate';
 import PhoneUpdate from './components/PhoneUpdate/PhoneUpdate';
+import MyDogProfileUpdate from './components/MyDogProfileUpdate/MyDogProfileUpdate';
+import DogInfoUpdate from './components/DogInfoUpdate/DogInfoUpdate';
+import { DogsProvider } from './Context';
+import  './App.css';
 
 export default class App extends Component {
   render(){
@@ -40,6 +38,8 @@ export default class App extends Component {
           <PrivateRoute exact path = '/personupdate' component={PersonUpdate}/>
           <PrivateRoute exact path = '/loginupdate' component={LoginUpdate}/>
           <PrivateRoute exact path = '/phoneupdate' component={PhoneUpdate}/>
+          <PrivateRoute exact path = '/mydogprofileupdate' component={MyDogProfileUpdate}/>
+          <PrivateRoute exact path = '/doginfoupdate' component={DogInfoUpdate}/>
         </div>
       </DogsProvider>
     );

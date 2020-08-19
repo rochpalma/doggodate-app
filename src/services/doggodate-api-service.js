@@ -37,6 +37,19 @@ const DoggodateApiService = {
         : res.json()
     );
   },
+  getMyDog() {
+    //remove temp
+    return fetch(`${config.API_ENDPOINT}/dogs/getdogdetails`, {
+    // return fetch(`${config.API_ENDPOINT}/users/`, {
+      headers: {
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+    }).then((res) =>
+        !res.ok 
+        ? res.json().then((e) => Promise.reject(e)) 
+        : res.json()
+    );
+  },
   addDog(newDog) {
     return fetch(`${config.API_ENDPOINT}/dogs`, {
       method: "POST",
@@ -49,6 +62,20 @@ const DoggodateApiService = {
       !res.ok 
       ? res.json().then((e) => Promise.reject(e)) 
       : res.json()
+    );
+  },
+  updateDog(dogId, updateDog) {
+    return fetch(`${config.API_ENDPOINT}/dogs/${dogId}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(updateDog),
+    }).then((res) =>
+      !res.ok 
+      ? res.json().then((e) => Promise.reject(e)) 
+      : true
     );
   },
   //users

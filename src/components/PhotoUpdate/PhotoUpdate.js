@@ -3,8 +3,8 @@ import Context from '../../Context';
 import DoggodateApiService from '../../services/doggodate-api-service';
 import ProfileNav from '../ProfileNav/ProfileNav';
 import TokenService from '../../services/token-service';
-
-class PhoneUpdate extends Component {
+//to do
+class PhotoUpdate extends Component {
     static contextType = Context;
 
 	state = {
@@ -21,7 +21,7 @@ class PhoneUpdate extends Component {
 			mobile: mobile.value,
         })
         .then(res => {
-            this.props.history.push('/myprofile')
+            this.props.history.push('/mydogprofileupdate')
         })
         .catch(err => {
             this.setState({ error: err.error.message })
@@ -51,23 +51,22 @@ class PhoneUpdate extends Component {
                                         className="panel-body"
                                         onSubmit={this.handleSubmit}
                                     >
-                                        
-                                        <div className="row">								   
-                                            <div className="col-xs-3 text-right">
-                                                 <label htmlFor='home'>Home</label>
-                                            </div>
-                                            <div className="col-xs-9">
-                                                <input type='text' name='home' id='home' value={context.user.home}/>
-                                            </div>     							
-                                        </div>
                                         <div className="row">								   
                                             <div className="col-xs-3 text-right">
                                                  <label htmlFor='mobile'>Mobile</label>
                                             </div>
                                             <div className="col-xs-9">
-                                                <input type='text' name='mobile' id='mobile' value={context.user.mobile}/>
+                                                <input type='text' name='mobile' id='mobile' defaultValue={context.user.mobile}/>
                                             </div>
                                                               
+                                        </div>
+                                        <div className="row">								   
+                                            <div className="col-xs-3 text-right">
+                                                 <label htmlFor='home'>Home</label>
+                                            </div>
+                                            <div className="col-xs-9">
+                                                <input type='text' name='home' id='home' defaultValue={context.user.home}/>
+                                            </div>     							
                                         </div>
                                         <div className="row">								   
                                             <div className="col-xs-3 text-right">
@@ -88,4 +87,4 @@ class PhoneUpdate extends Component {
     }
 }
  
-export default PhoneUpdate;
+export default PhotoUpdate;

@@ -12,104 +12,118 @@ class ProfileSetup extends Component {
 
     state = {
         error: null,
-        success : false,
-        url : ""
+        selectedFile: null,
+        fileName: null
     }
 
-    handleUpload = event => {
-        let file = this.uploadInput.files[0];
-        // Split the filename to get the name and type
-        let fileParts = this.uploadInput.files[0].name.split('.');
-        let fileName = fileParts[0];
-        let fileType = fileParts[1];
-        console.log("Preparing the upload");
-        axios.post("http://localhost:8000/sign_s3",{
-            fileName : fileName,
-            fileType : fileType
-        })
-        .then(response => {
-            var returnData = response.data.data.returnData;
-            var signedRequest = returnData.signedRequest;
-            var url = returnData.url;
-            this.setState({url: url})
-            console.log("Received a signed request " + signedRequest);
-            
-            // Put the fileType in the headers for the upload
-            var options = {
-                headers: {
-                'Content-Type': fileType
-                }
-            };
-            axios.put(signedRequest,file,options)
-            .then(result => {
-                console.log("Response from s3")
-                this.setState({success: true});
-            })
-            .catch(error => {
-                alert("ERROR " + JSON.stringify(error));
-            })
-        })
-        .catch(error => {
-        alert(JSON.stringify(error));
-        })
-    }
+    singleFileChangedHandler = ( event ) => {
+        this.setState({
+         selectedFile: event.target.files[0]
+        });    
+    };
 
     handleSubmit = event => {
         event.preventDefault();
-        const { full_name, age, about_me, breed, size, gender } = event.target;
+        const { full_name, age, about_me, breed, size, gender, city, loc_state, zip_code } = event.target;
+       
 
         this.setState({ error: null });
-        DoggodateApiService.addDog({
-            full_name: full_name.value,
-            age: age.value,
-            about_me: about_me.value,
-            breed: breed.value,
-            size: size.value,
-            gender: gender.value,
-            owner_id: TokenService.getUserId(),
-            picture: this.state.url
+        const data = new FormData();
+        // If file selected
+          if ( this.state.selectedFile ) {
+        data.append( 'profileImage', this.state.selectedFile, this.state.selectedFile.name );
+        axios.post( 'http://localhost:8000/api/profile/profile-img-upload', data, {
+            headers: {
+             'accept': 'application/json',
+             'Accept-Language': 'en-US,en;q=0.8',
+             'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+            }
+           })
+            .then( ( response ) => {
+        if ( 200 === response.status ) {
+              // If file size is larger than expected.
+              if( response.data.error ) {
+               if ( 'LIMIT_FILE_SIZE' === response.data.error.code ) {
+                
+                console.log('Max size: 2MB', 'red')
+               } else {
+                console.log( response.data );
+        // If not the given file type
+               
+               }
+              } else {
+               // Success
+               let fileName = response.data.location;
+               console.log( 'fileName', fileName );
+               this.setState({fileName})
+               DoggodateApiService.addDog({
+                full_name: full_name.value,
+                age: age.value,
+                about_me: about_me.value,
+                breed: breed.value,
+                size: size.value,
+                gender: gender.value,
+                owner_id: TokenService.getUserId(),
+                picture: this.state.fileName,
+                city: city.value,
+                loc_state: loc_state.value, 
+                zip_code: zip_code.value
+    
+            })
+            .then((res) => {
+                full_name.value = ''
+                age.value= ''
+                about_me.value= ''
+                breed.value= ''
+                size.value= ''
+                gender.value= ''
+                this.props.history.push('/feed')
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+                // this.setState({ error: err.error })
+            })
+              }
+             }
+            }).catch( ( error ) => {
+                console.log( error );
+            // If another error
+            // this.ocShowAlert( error, 'red' );
+           });
+          } else {
+              console.log('Please upload file')          
+          }
+       
 
-        })
-        .then(() => {
-            full_name.value = ''
-            age.value= ''
-            about_me.value= ''
-            breed.value= ''
-            size.value= ''
-            gender.value= ''
-            this.props.history.push('/feed')
-        })
-        .catch(err => {
-            console.log(err)
-            // this.setState({ error: err.error })
-        })
+        
     }
 
+   
     renderInvalidMessage = () => {
         return <p>{this.state.error}</p>
     }
 
     render() { 
         const { error } = this.state;
+        console.log(this.state)
         return (  
             <div>
                 <ProfileNav />
                 <main>
-                    <div className='userform-container'>
+                    <div className='event-form-container'>
                         <form
+                            // onSubmit={this.handleSubmit}
                             onSubmit={this.handleSubmit}
                         >
                             {(error) ? this.renderInvalidMessage() : null}
-                            <fieldset>
-                                <div className='form-fields'>
+                            {/* <fieldset> */}
+                                {/* <div className='form-fields'> */}
+                                <div className='event-form-fields event-form-border'>
                                     <legend>Dog's Profile</legend> 
-                                    <input onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file"/> 
-                                    <button
-                                        onClick={this.handleUpload}
-                                    >
-                                        Add Photos
-                                    </button>
-                                    <label htmlFor='full_name'>Name</label>
+                                    <input type="file" onChange={this.singleFileChangedHandler}/>
+                                    
+                                     <label htmlFor='full_name'>Name</label>
                                     <input type='text' name='full_name' id='full_name' required/>
                                     <label htmlFor='about_me'>About me</label>
                                     <textarea id='about_me' name='about_me'
@@ -133,10 +147,15 @@ class ProfileSetup extends Component {
                                         <input type='radio' id='male' name='gender' value='male' />
                                         <label htmlFor='male'>Male</label>
                                     </div>
-                                    {/* <input type='submit' value='Save' id='submit' />  */}
-                                    <button type='submit' className='btn'>Save</button>          
+                                    <label htmlFor='city'>City</label>
+                                    <input type='text' name='city' id='city' required/>
+                                    <label htmlFor='loc_state'>State</label>
+                                    <input type='text' name='loc_state' id='loc_state' required/>
+                                    <label htmlFor='zip_code'>Zip Code</label>
+                                    <input type='text' name='zip_code' id='zip_code' required/>
+                                    <button type='submit' className='btn'>Save</button>         
                                 </div>                           
-                            </fieldset>         
+                            {/* </fieldset>          */}
                         </form>
                     </div>
                 </main>
