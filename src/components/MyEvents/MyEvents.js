@@ -20,24 +20,23 @@ class MyEvents extends Component {
             return (
                 <li className="panel panel-primary">
                     <section>
-                    <div className="panel-heading">
-                        <h2 className="panel-title">Meetup with {event.full_name}</h2>
-                    </div>
-                    <div className="panel-body">
-                    <div className="row">                             
-                        <div className="col-xs-9">{event.event_name}</div>                   
-                    </div>
-                    <div className="row">                             
-                        <div className="col-xs-9">{event.description}</div>                   
-                    </div>
-                    <div className="row">                             
-                        <div className="col-xs-9">{event.location}</div>                   
-                    </div>
-                    <div className="row">                             
-                        <div className="col-xs-9">{event.start_time} - {event.end_time}</div>                   
-                    </div>
-                       
-                    </div>
+                        <div className="panel-heading">
+                            <h2 className="panel-title">Meetup with {event.full_name}</h2>
+                            </div>
+                            <div className="panel-body">
+                            <div className="row">                             
+                                <div className="col-xs-9">{event.event_name}</div>                   
+                            </div>
+                            <div className="row">                             
+                                <div className="col-xs-9">{event.description}</div>                   
+                            </div>
+                            <div className="row">                             
+                                <div className="col-xs-9">{event.location}</div>                   
+                            </div>
+                            <div className="row">                             
+                                <div className="col-xs-9">{event.start_time} - {event.end_time}</div>                   
+                            </div>                       
+                        </div>
                     </section> 
                 </li>
             )

@@ -122,7 +122,7 @@ class PetDetails extends Component {
                 <div className='dog-info'>
                     <span>
                         <img src={icon_location} className='icons' />
-                        {this.props.dog.city}
+                        {this.props.dog.city}, {this.props.dog.loc_state}
                     </span>
                     <span>
                         <img src={icon_size} className='icons' />
