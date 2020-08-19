@@ -11,7 +11,7 @@ class UserButtons extends Component {
                         <Link to='/setup'  className='page-btn'>Add Dog</Link>
                     </li> */}
                     <li>
-                        <Link to='/setup'  className='page-btn'>Edit Profile</Link>
+                        <Link to='/mydogprofileupdate'  className='profile-btn'>Edit Profile</Link>
                     </li>
                 </ul>              
             </div>
