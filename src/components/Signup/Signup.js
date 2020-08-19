@@ -25,17 +25,35 @@ class Signup extends Component {
             password: password.value,
         })
         .then(res => {
-            first_name.value = ''
-            last_name.value = ''
-            email.value = ''
-            password.value = ''
-            TokenService.saveUserId(res.id)
+            // first_name.value = ''
+            // last_name.value = ''
+            // email.value = ''
+            // password.value = ''
+            //20200815_ROP: Call auth to get token in order to access feed
+
+            // TokenService.saveUserId(res.id)
+            // this.props.history.push('/setup')
             this.props.history.push('/setup')
+            TokenService.saveUserId(res.id)
+            AuthApiService.postLogin({
+                email: email.value,
+                password: password.value
+            })
+            .then(res => {
+                email.value = '';
+                password.value = '';
+                TokenService.saveAuthToken(res.authToken);    
+            })
+            .catch(err => {
+                this.setState({ error: err.error })
+            });
+
         })
         .catch(err => {
             this.setState({ error: err.error.message })
         })
     }
+ 
 
     renderInvalidMessage = () => {
         return <p>{this.state.error}</p>

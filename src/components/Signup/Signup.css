@@ -1,19 +1,4 @@
-.userform-container{
-    margin-left: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 
-.form-border{
-    border-radius: 25px;
-    border: 2px solid #f26a5d;
-    height: 450px;
-    width: 400px;
-    background-color:#f26a5d;
-    opacity: 0.8;
-
-}
 
 .signup-bg{
     background-image: url(../../images/bg/signup_bg.jpg);
