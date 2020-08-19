@@ -51,6 +51,15 @@ class PhoneUpdate extends Component {
                                         className="panel-body"
                                         onSubmit={this.handleSubmit}
                                     >
+                                        
+                                        <div className="row">								   
+                                            <div className="col-xs-3 text-right">
+                                                 <label htmlFor='home'>Home</label>
+                                            </div>
+                                            <div className="col-xs-9">
+                                                <input type='text' name='home' id='home' value={context.user.home}/>
+                                            </div>     							
+                                        </div>
                                         <div className="row">								   
                                             <div className="col-xs-3 text-right">
                                                  <label htmlFor='mobile'>Mobile</label>
@@ -59,14 +68,6 @@ class PhoneUpdate extends Component {
                                                 <input type='text' name='mobile' id='mobile' value={context.user.mobile}/>
                                             </div>
                                                               
-                                        </div>
-                                        <div className="row">								   
-                                            <div className="col-xs-3 text-right">
-                                                 <label htmlFor='home'>Home</label>
-                                            </div>
-                                            <div className="col-xs-9">
-                                                <input type='text' name='home' id='home' value={context.user.home}/>
-                                            </div>     							
                                         </div>
                                         <div className="row">								   
                                             <div className="col-xs-3 text-right">
