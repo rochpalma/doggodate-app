@@ -22,7 +22,7 @@ class MyDogProfileUpdate extends Component {
                                         <div className="panel-heading">
                                             <h2 className="panel-title">PHOTO INFORMATION</h2>
                                             <div className='update-btn-container'>
-                                                <Link to='' className='update-btn btn btn-primary btn-sm'>Update</Link>
+                                                <Link to='/photoupdate' className='update-btn btn btn-primary btn-sm'>Update</Link>
                                             </div>
                                             <br/>
                                         </div>
