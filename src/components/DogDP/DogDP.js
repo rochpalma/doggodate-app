@@ -7,7 +7,7 @@ class DogDP extends Component {
     render() {  
         return(
             <div>
-                <img src={this.props.picture} alt='dog1' className='dp-img'/> 
+                <img src={this.props.picture} alt={`${this.props.dogName}'s picture`} className='dp-img'/> 
             </div
         >)
     }

@@ -13,16 +13,16 @@ class PostComment extends Component {
             content: comment.value,
             profile_id: this.props.profile_id,
             user_id: TokenService.getUserId()
+         })
+        .then(this.context.addComment)
+        
+        .then((res) => {
+            comment.value = ''
+            window.location.reload();
         })
-            .then(this.context.addComment)
-            
-            .then((res) => {
-                comment.value = ''
-                window.location.reload();
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        .catch(err => {
+            console.log(err)
+        })
     }
     render() { 
         return (

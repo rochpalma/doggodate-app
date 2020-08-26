@@ -8,3 +8,29 @@ nav li{
     list-style-type: none;
     margin-right: 20px;
 }
+
+#ham-nav {
+    width: 100%;
+    background: #1d8ead;
+    text-align: left;
+}
+  
+#ham-nav label,
+#hamburger {
+    display: none;
+}
+
+#ham-items {
+    display: flex;
+}
+
+#ham-items a {
+    width: 20%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+#ham-items a:hover {
+    background: #43d2fa;
+  }

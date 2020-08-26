@@ -15,39 +15,19 @@ class Profile extends Component {
     componentDidMount() {
         const userId = TokenService.getUserId();
         DoggodateApiService.getDogsByOwner(userId)
-            .then(dogs => {
-                this.context.setMyDogs(dogs)
-                TokenService.saveDogId(this.context.myDogs[0].id)
-            }
-            )
-            .catch(this.context.setError);
+        .then(dogs => {
+            this.context.setMyDogs(dogs)
+            TokenService.saveDogId(this.context.myDogs[0].id)
+        })
+        .catch(this.context.setError);
         DoggodateApiService.getComments(TokenService.getDogId())
-            .then(res => {
-                this.context.setComments(res);
-                console.log("context" +JSON.stringify(res))     
-            })
-            .catch(err => console.log(err))
+        .then(res => {
+            this.context.setComments(res);  
+        })
+        .catch(err => console.log(err))
               
     }
-
-    // render() { 
-    //     return (  
-    //         <div>
-    //             <main>
-    //                 <div className='profile-container'>
-    //                 <DogDP />
-    //                 <UserButtons />
-    //                 <PetDetails />
-    //                 {/* <CommentSection /> */}
-    //                 </div>
-    //             </main>
-    //         </div>
-           
-    //     );
-    // }
-
     render() {
-    
         let profileId = ''; 
         const dogs = this.context.myDogs.map((dog, index) => {
             if(index===0){//temporary
@@ -55,7 +35,7 @@ class Profile extends Component {
                 console.log('dogs ' + JSON.stringify(dog) +' '+ index)
                 return(
                     <>
-                        <DogDP picture={dog.picture}/>
+                        <DogDP picture={dog.picture} dogName={dog.full_name}/>
                         <UserButtons />
                         <section className='pet-details'>
                             <PetDetails dog={dog}/>

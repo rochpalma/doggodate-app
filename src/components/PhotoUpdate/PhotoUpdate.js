@@ -4,7 +4,7 @@ import DoggodateApiService from '../../services/doggodate-api-service';
 import ProfileNav from '../ProfileNav/ProfileNav';
 import TokenService from '../../services/token-service';
 import axios from 'axios';
-//to do
+
 class PhotoUpdate extends Component {
     static contextType = Context;
 
@@ -23,9 +23,9 @@ class PhotoUpdate extends Component {
     handleSubmit = event => {
         event.preventDefault();
         
-
         this.setState({ error: null });
         const data = new FormData();
+
         // If file selected
           if ( this.state.selectedFile ) {
         data.append( 'profileImage', this.state.selectedFile, this.state.selectedFile.name );
@@ -39,37 +39,31 @@ class PhotoUpdate extends Component {
             .then( ( response ) => {
         if ( 200 === response.status ) {
               // If file size is larger than expected.
-              if( response.data.error ) {
-               if ( 'LIMIT_FILE_SIZE' === response.data.error.code ) {
-                
-                console.log('Max size: 2MB', 'red')
-               } else {
-                console.log( response.data );
-        // If not the given file type
-               
-               }
-              } else {
+            if( response.data.error ) {
+                if ( 'LIMIT_FILE_SIZE' === response.data.error.code ) {
+                    console.log('Max size: 2MB', 'red')
+                } else {
+                 // If not the given file type
+                }
+            } else {
                // Success
                let fileName = response.data.location;
-               console.log( 'fileName', fileName );
                this.setState({fileName})
-            DoggodateApiService.updateDog(TokenService.getDogId(),{
-                picture: this.state.fileName,
-            })
-            .then((res) => {
-                this.props.history.push('/mydogprofileupdate')
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-                // this.setState({ error: err.error })
-            })
-              }
+                DoggodateApiService.updateDog(TokenService.getDogId(),{
+                    picture: this.state.fileName,
+                })
+                .then((res) => {
+                    this.props.history.push('/mydogprofileupdate')
+                })
+                .catch(err => {
+                    console.log(err)
+                    // this.setState({ error: err.error })
+                })
+            }
              }
             }).catch( ( error ) => {
-                console.log( error );
-            // If another error
-            // this.ocShowAlert( error, 'red' );
+                this.setState({ error })
+           
            });
           } else {
               console.log('Please upload file')          
@@ -101,7 +95,7 @@ class PhotoUpdate extends Component {
                                     >
                                         <div className="row">								   
                                             <div className="col-xs-3 text-right">
-                                                 <label htmlFor='mobile'>Mobile</label>
+                                                 <label htmlFor='picture'>Picture</label>
                                             </div>
                                             <input type="file" onChange={this.singleFileChangedHandler}/>
                                                               
@@ -119,8 +113,7 @@ class PhotoUpdate extends Component {
                             </div>	
                     </div>                              
                     )}}
-            </Context.Consumer>       
-            
+            </Context.Consumer>              
         );
     }
 }
