@@ -3,29 +3,71 @@ import Context from '../../Context';
 import DoggodateApiService from '../../services/doggodate-api-service';
 import ProfileNav from '../ProfileNav/ProfileNav';
 import TokenService from '../../services/token-service';
-//to do
+import axios from 'axios';
+
 class PhotoUpdate extends Component {
     static contextType = Context;
 
 	state = {
-        error: null
+        error: null,
+        selectedFile: null,
+        fileName: null
     }
+
+    singleFileChangedHandler = ( event ) => {
+        this.setState({
+         selectedFile: event.target.files[0]
+        });    
+    };
 
     handleSubmit = event => {
         event.preventDefault();
-        const { home, mobile } = event.target;
-
+        
         this.setState({ error: null });
-        DoggodateApiService.updateUser(TokenService.getUserId(),{
-            home:  home.value,
-			mobile: mobile.value,
-        })
-        .then(res => {
-            this.props.history.push('/mydogprofileupdate')
-        })
-        .catch(err => {
-            this.setState({ error: err.error.message })
-        })
+        const data = new FormData();
+
+        // If file selected
+          if ( this.state.selectedFile ) {
+        data.append( 'profileImage', this.state.selectedFile, this.state.selectedFile.name );
+        axios.post( 'http://localhost:8000/api/profile/profile-img-upload', data, {
+            headers: {
+             'accept': 'application/json',
+             'Accept-Language': 'en-US,en;q=0.8',
+             'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+            }
+           })
+            .then( ( response ) => {
+        if ( 200 === response.status ) {
+              // If file size is larger than expected.
+            if( response.data.error ) {
+                if ( 'LIMIT_FILE_SIZE' === response.data.error.code ) {
+                    console.log('Max size: 2MB', 'red')
+                } else {
+                 // If not the given file type
+                }
+            } else {
+               // Success
+               let fileName = response.data.location;
+               this.setState({fileName})
+                DoggodateApiService.updateDog(TokenService.getDogId(),{
+                    picture: this.state.fileName,
+                })
+                .then((res) => {
+                    this.props.history.push('/mydogprofileupdate')
+                })
+                .catch(err => {
+                    console.log(err)
+                    // this.setState({ error: err.error })
+                })
+            }
+             }
+            }).catch( ( error ) => {
+                this.setState({ error })
+           
+           });
+          } else {
+              console.log('Please upload file')          
+          }
     }
 
     handleClickCancel = () => {
@@ -43,7 +85,7 @@ class PhotoUpdate extends Component {
                             <h1>Profile Summary</h1>    
                                 <section className="panel panel-primary">
                                     <div className="panel-heading">
-                                        <h2 className="panel-title">PHONE INFORMATION</h2>
+                                        <h2 className="panel-title">PHOTO INFORMATION</h2>
                                         <br/>
                                     </div>
                                     
@@ -53,20 +95,10 @@ class PhotoUpdate extends Component {
                                     >
                                         <div className="row">								   
                                             <div className="col-xs-3 text-right">
-                                                 <label htmlFor='mobile'>Mobile</label>
+                                                 <label htmlFor='picture'>Picture</label>
                                             </div>
-                                            <div className="col-xs-9">
-                                                <input type='text' name='mobile' id='mobile' defaultValue={context.user.mobile}/>
-                                            </div>
+                                            <input type="file" onChange={this.singleFileChangedHandler}/>
                                                               
-                                        </div>
-                                        <div className="row">								   
-                                            <div className="col-xs-3 text-right">
-                                                 <label htmlFor='home'>Home</label>
-                                            </div>
-                                            <div className="col-xs-9">
-                                                <input type='text' name='home' id='home' defaultValue={context.user.home}/>
-                                            </div>     							
                                         </div>
                                         <div className="row">								   
                                             <div className="col-xs-3 text-right">
@@ -81,8 +113,7 @@ class PhotoUpdate extends Component {
                             </div>	
                     </div>                              
                     )}}
-            </Context.Consumer>       
-            
+            </Context.Consumer>              
         );
     }
 }

@@ -18,6 +18,7 @@ import MyDogProfileUpdate from './components/MyDogProfileUpdate/MyDogProfileUpda
 import DogInfoUpdate from './components/DogInfoUpdate/DogInfoUpdate';
 import { DogsProvider } from './Context';
 import  './App.css';
+import PhotoUpdate from './components/PhotoUpdate/PhotoUpdate';
 
 export default class App extends Component {
   render(){
@@ -40,6 +41,7 @@ export default class App extends Component {
           <PrivateRoute exact path = '/phoneupdate' component={PhoneUpdate}/>
           <PrivateRoute exact path = '/mydogprofileupdate' component={MyDogProfileUpdate}/>
           <PrivateRoute exact path = '/doginfoupdate' component={DogInfoUpdate}/>
+          <PrivateRoute exact path = '/photoupdate' component={PhotoUpdate}/>
         </div>
       </DogsProvider>
     );

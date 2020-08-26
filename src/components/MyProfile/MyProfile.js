@@ -9,10 +9,10 @@ class MyProfile extends Component {
 
     componentDidMount() {
         DoggodateApiService.getUser()
-            .then(user => {
-                this.context.getUserData(user);
-            })
-            .catch(this.context.setError);
+        .then(user => {
+            this.context.getUserData(user);
+        })
+        .catch(this.context.setError);
     }
 
     render() {

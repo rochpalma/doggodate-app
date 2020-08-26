@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo/DoggoDate_03.png';
 import './Signin.css'
@@ -88,7 +87,6 @@ class Signin extends Component {
                         </form>
                     </div>
                 </main>
-                {/* <Footer /> */}
             </div>
         );
     }

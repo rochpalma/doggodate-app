@@ -26,104 +26,88 @@ class ProfileSetup extends Component {
         event.preventDefault();
         const { full_name, age, about_me, breed, size, gender, city, loc_state, zip_code } = event.target;
        
-
         this.setState({ error: null });
         const data = new FormData();
         // If file selected
-          if ( this.state.selectedFile ) {
-        data.append( 'profileImage', this.state.selectedFile, this.state.selectedFile.name );
-        axios.post( 'http://localhost:8000/api/profile/profile-img-upload', data, {
-            headers: {
-             'accept': 'application/json',
-             'Accept-Language': 'en-US,en;q=0.8',
-             'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-            }
-           })
+        if ( this.state.selectedFile ) {
+            data.append( 'profileImage', this.state.selectedFile, this.state.selectedFile.name );
+            axios.post( 'http://localhost:8000/api/profile/profile-img-upload', data, {
+                headers: {
+                'accept': 'application/json',
+                'Accept-Language': 'en-US,en;q=0.8',
+                'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+                }
+            })
             .then( ( response ) => {
-        if ( 200 === response.status ) {
-              // If file size is larger than expected.
-              if( response.data.error ) {
-               if ( 'LIMIT_FILE_SIZE' === response.data.error.code ) {
+                if ( 200 === response.status ) {
+                    // If file size is larger than expected.
+                    if( response.data.error ) {
+                        if ( 'LIMIT_FILE_SIZE' === response.data.error.code ) {  
+                            console.log('Max size: 2MB', 'red')
+                        } else {
+                            console.log( response.data );        
+                        }
+                    } else {
+                        // Success
+                        let fileName = response.data.location;
+            
+                        this.setState({fileName})
+                        DoggodateApiService.addDog({
+                            full_name: full_name.value,
+                            age: age.value,
+                            about_me: about_me.value,
+                            breed: breed.value,
+                            size: size.value,
+                            gender: gender.value,
+                            owner_id: TokenService.getUserId(),
+                            picture: this.state.fileName,
+                            city: city.value,
+                            loc_state: loc_state.value, 
+                            zip_code: zip_code.value
                 
-                console.log('Max size: 2MB', 'red')
-               } else {
-                console.log( response.data );
-        // If not the given file type
-               
-               }
-              } else {
-               // Success
-               let fileName = response.data.location;
-               console.log( 'fileName', fileName );
-               this.setState({fileName})
-               DoggodateApiService.addDog({
-                full_name: full_name.value,
-                age: age.value,
-                about_me: about_me.value,
-                breed: breed.value,
-                size: size.value,
-                gender: gender.value,
-                owner_id: TokenService.getUserId(),
-                picture: this.state.fileName,
-                city: city.value,
-                loc_state: loc_state.value, 
-                zip_code: zip_code.value
-    
-            })
-            .then((res) => {
-                full_name.value = ''
-                age.value= ''
-                about_me.value= ''
-                breed.value= ''
-                size.value= ''
-                gender.value= ''
-                this.props.history.push('/feed')
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-                // this.setState({ error: err.error })
-            })
-              }
-             }
+                        })
+                        .then((res) => {
+                            full_name.value = ''
+                            age.value= ''
+                            about_me.value= ''
+                            breed.value= ''
+                            size.value= ''
+                            gender.value= ''
+                            this.props.history.push('/feed')
+                            console.log(res)
+                        })
+                        .catch(err => {
+                            this.setState({ error: err })
+                        })
+                    }
+                }
             }).catch( ( error ) => {
-                console.log( error );
-            // If another error
-            // this.ocShowAlert( error, 'red' );
-           });
-          } else {
+                    console.log( error );
+            });
+        } else {
               console.log('Please upload file')          
-          }
-       
-
-        
+        }   
     }
 
-   
     renderInvalidMessage = () => {
         return <p>{this.state.error}</p>
     }
 
     render() { 
         const { error } = this.state;
-        console.log(this.state)
         return (  
             <div>
                 <ProfileNav />
                 <main>
                     <div className='event-form-container'>
                         <form
-                            // onSubmit={this.handleSubmit}
                             onSubmit={this.handleSubmit}
                         >
                             {(error) ? this.renderInvalidMessage() : null}
-                            {/* <fieldset> */}
-                                {/* <div className='form-fields'> */}
                                 <div className='event-form-fields event-form-border'>
                                     <legend>Dog's Profile</legend> 
-                                    <input type="file" onChange={this.singleFileChangedHandler}/>
-                                    
-                                     <label htmlFor='full_name'>Name</label>
+                                    <input type="file" onChange={this.singleFileChangedHandler}/>                                 
+                                    <label htmlFor='full_name'>Name</label>
                                     <input type='text' name='full_name' id='full_name' required/>
                                     <label htmlFor='about_me'>About me</label>
                                     <textarea id='about_me' name='about_me'
@@ -155,7 +139,6 @@ class ProfileSetup extends Component {
                                     <input type='text' name='zip_code' id='zip_code' required/>
                                     <button type='submit' className='btn'>Save</button>         
                                 </div>                           
-                            {/* </fieldset>          */}
                         </form>
                     </div>
                 </main>

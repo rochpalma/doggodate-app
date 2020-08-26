@@ -10,11 +10,9 @@ class ProfileNav extends Component {
 
     handleLogOut = () => {
         TokenService.clearAuthToken();
-        // this.context.setUser({});
         TokenService.clearDogId();
         TokenService.clearOwnerId();
         TokenService.clearUserId();
-        //this.context.clearDogProfile();
       };
 
     renderLogout = () => {
@@ -28,21 +26,17 @@ class ProfileNav extends Component {
         return (  
             <nav>
                 <Link to='/feed'><img src={logo} alt='dog tinder logo' className='logo'/></Link>
-                <ul>
-                    <li>
-                        <Link to='/feed' className='nav-links'>Home</Link>
-                    </li>
-                    <li>
-                        <Link to='/mydogprofile' className='nav-links'>My Dog Profile</Link>
-                    </li>
-                    <li>
-                        <Link to='/myevents' className='nav-links'>My Events</Link>
-                    </li>
-                    <li>
-                        <Link to='/myprofile' className='nav-links'>My Profile</Link>
-                    </li>
-                    {this.renderLogout()}
-                </ul>
+                <div id="ham-nav">
+                    <label htmlFor="hamburger">&#9776;</label>
+                    <input type="checkbox" id="hamburger" />
+                    <div id='ham-items'>
+                        <Link to='/feed'>Home</Link>
+                        <Link to='/mydogprofile'>My Dog Profile</Link>
+                        <Link to='/myevents'>My Events</Link>
+                        <Link to='/myprofile'>My Profile</Link>
+                        {this.renderLogout()}
+                    </div>
+                </div>
             </nav>
         );
     }

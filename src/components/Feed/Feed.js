@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ProfileNav from '../ProfileNav/ProfileNav';
-import Profile from '../Profile/Profile';
 import Footer from '../Footer/Footer';
 import PetList from '../PetList/PetList'
 
@@ -10,7 +9,6 @@ class Feed extends Component {
             <>
                 <ProfileNav />
                 <PetList />
-                {/* <Profile /> */}
                 <Footer />
             </>
         );

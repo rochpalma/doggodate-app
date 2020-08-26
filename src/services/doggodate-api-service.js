@@ -64,14 +64,14 @@ const DoggodateApiService = {
       : res.json()
     );
   },
-  updateDog(dogId, updateDog) {
+  updateDog(dogId, updatedDog) {
     return fetch(`${config.API_ENDPOINT}/dogs/${dogId}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
         authorization: `bearer ${TokenService.getAuthToken()}`,
       },
-      body: JSON.stringify(updateDog),
+      body: JSON.stringify(updatedDog),
     }).then((res) =>
       !res.ok 
       ? res.json().then((e) => Promise.reject(e)) 

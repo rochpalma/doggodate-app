@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Context from '../../Context';
 import HomeNav from '../HomeNav/HomeNav';
-import Footer from '../Footer/Footer';
-import { Link } from 'react-router-dom';
 import './Signup.css';
 import AuthApiService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
@@ -25,14 +23,6 @@ class Signup extends Component {
             password: password.value,
         })
         .then(res => {
-            // first_name.value = ''
-            // last_name.value = ''
-            // email.value = ''
-            // password.value = ''
-            //20200815_ROP: Call auth to get token in order to access feed
-
-            // TokenService.saveUserId(res.id)
-            // this.props.history.push('/setup')
             this.props.history.push('/setup')
             TokenService.saveUserId(res.id)
             AuthApiService.postLogin({
@@ -82,13 +72,11 @@ class Signup extends Component {
                                 <input type='password' name='password' id='password' required/>
                                 <label htmlFor='password-2'>Confirm Password</label>
                                 <input type='password' name='password-2' id='password-2' required className='red'/>
-                                {/* <Link to='/setup' className='btn'>Sign up</Link> */}
                                 <button type='submit' className='btn'>Sign up</button>
                             </div>
                         </form>
                     </div>
                 </main>
-                {/* <Footer /> */}
             </div>
         );
     }

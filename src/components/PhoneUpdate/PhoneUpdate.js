@@ -57,7 +57,7 @@ class PhoneUpdate extends Component {
                                                  <label htmlFor='home'>Home</label>
                                             </div>
                                             <div className="col-xs-9">
-                                                <input type='text' name='home' id='home' value={context.user.home}/>
+                                                <input type='text' name='home' id='home' defaultValue={context.user.home}/>
                                             </div>     							
                                         </div>
                                         <div className="row">								   
@@ -65,7 +65,7 @@ class PhoneUpdate extends Component {
                                                  <label htmlFor='mobile'>Mobile</label>
                                             </div>
                                             <div className="col-xs-9">
-                                                <input type='text' name='mobile' id='mobile' value={context.user.mobile}/>
+                                                <input type='text' name='mobile' id='mobile' defaultValue={context.user.mobile}/>
                                             </div>
                                                               
                                         </div>
