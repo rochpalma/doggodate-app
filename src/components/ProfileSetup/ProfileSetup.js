@@ -6,7 +6,7 @@ import './ProfileSetup.css';
 import DoggodateApiService from '../../services/doggodate-api-service';
 import TokenService from '../../services/token-service';
 import axios from 'axios';
-import config from '../config';
+import config from '../../config';
 
 class ProfileSetup extends Component {
     static contextType = Context;
