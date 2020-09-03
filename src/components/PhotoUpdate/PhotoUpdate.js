@@ -4,7 +4,7 @@ import DoggodateApiService from '../../services/doggodate-api-service';
 import ProfileNav from '../ProfileNav/ProfileNav';
 import TokenService from '../../services/token-service';
 import axios from 'axios';
-import config from '../config';
+import config from '../../config';
 
 class PhotoUpdate extends Component {
     static contextType = Context;
