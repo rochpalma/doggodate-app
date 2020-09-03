@@ -6,6 +6,7 @@ import './ProfileSetup.css';
 import DoggodateApiService from '../../services/doggodate-api-service';
 import TokenService from '../../services/token-service';
 import axios from 'axios';
+import config from '../config';
 
 class ProfileSetup extends Component {
     static contextType = Context;
@@ -31,7 +32,7 @@ class ProfileSetup extends Component {
         // If file selected
         if ( this.state.selectedFile ) {
             data.append( 'profileImage', this.state.selectedFile, this.state.selectedFile.name );
-            axios.post( 'http://localhost:8000/api/profile/profile-img-upload', data, {
+            axios.post( `${config.API_ENDPOINT}/profile/profile-img-upload`, data, {
                 headers: {
                 'accept': 'application/json',
                 'Accept-Language': 'en-US,en;q=0.8',
